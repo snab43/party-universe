@@ -1,0 +1,164 @@
+/* Font */
+@font-face {
+	font-family: "Munro";
+	font-style: normal;
+	src: url("../fonts/munro.ttf"); 
+}
+
+@font-face {
+	font-family: "Munro Narrow";
+	font-style: narrow;
+	src: url("../fonts/munro_narrow.ttf");
+}
+
+@font-face {
+	font-family: "Munro Small";
+	font-style: small;
+	src: url("../fonts/munro_narrow.ttf");
+}
+
+
+body {
+	font-family: "Roboto", Sans-Serif;
+}
+
+button {
+	font-family: "Roboto", Sans-Serif;
+}
+
+textarea {
+	font-family: "Roboto", Sans-Serif;
+}
+
+#phone {
+	width: 380px;
+}
+
+#appBoxes {
+	width: 380px;
+	height: 640px;
+	overflow: auto;
+}
+
+#phoneTopBar,
+#phoneNavigationBar {
+	display: flex;
+	justify-content: space-between;
+	background: black;
+	color: white;
+}
+
+#phoneTopBar {
+	padding: 5px;
+}
+
+#phoneNavigationBar {
+	padding: 20px 80px;
+	font-size: 4px;
+}
+
+.material-icons {
+	font-size: 14px;
+}
+
+#textMessageBox > ul,
+#friendSpaceBox > ul {
+	margin-top: 0px;
+	padding: 0px;
+}
+
+#textMessageBox,
+#friendSpaceBox {
+	padding: 20px;
+}
+
+#textMessages,
+#friendSpaceFeed {
+	list-style: none;
+}
+
+#textMessageBox {
+	background: black;
+	color: white;
+}
+
+#friendSpaceBox {
+	background: lightblue;
+	color: black;
+}
+
+#textMessageBox > h3 {
+	color: lightgrey;
+	text-align: center;
+	margin-top: 0px;
+}
+
+#textMessages > li > small {
+	color: lightgrey;
+	text-align: right;
+	/* font-family: "Munro Small", monospace; */
+}
+
+#friendSpaceBox > h3 {
+	text-align: center;
+	color: darkblue;
+	margin-top: 0px;
+}
+
+#friendSpaceBox > p {
+	color: darkgrey;
+	text-align: center;
+	margin-top: 0px;
+}
+
+#textMessages > li {
+	color: white;
+	padding: 8px;
+	margin-bottom: 12px;
+	border-radius: 6px;
+}
+
+#friendSpaceFeed > li {
+	background: white;
+	padding: 8px;
+	margin-bottom: 12px;
+	border-radius: 6px;
+}
+
+#acceptanceMessage {
+	background: darkgreen;
+}
+
+#rejectionMessage {
+	background: darkred;
+}
+
+#keyMessage {
+	background: darkblue;
+}
+
+#defaultMessage {
+	background: #404040;
+}
+
+#createPost {
+	margin-bottom: 20px;
+}
+
+#createPost > textarea {
+	width: 98%;
+	resize: none;
+}
+
+#createPost > h4 {
+	margin: 10px 0;
+}
+
+#friendSpaceFeed > li > b {
+	color: darkblue;
+}
+
+#friendSpaceFeed > li > small {
+	color: grey;
+	/* font-family: "Munro Small", monospace; */
+}
