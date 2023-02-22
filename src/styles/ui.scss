@@ -3,24 +3,6 @@ $stat-height: 55px;
 $gameData-height: 30px;
 $container-padding: 12px;
 
-// Debug Settings
-#stats,
-#gameData {
-	background-color: gray;
-}
-
-#actionsContainer {
-	background-color: blue;
-}
-
-#partyContainer {
-	background-color: red;
-}
-
-#phoneContainer {
-	background-color: yellow;
-}
-
 // =================================================
 // UI Layout
 // -------------------------------------------------
@@ -37,6 +19,9 @@ body {
 	#stats {
 		height: $stat-height;
 		padding: $container-padding;
+
+		color: white;
+		background-color: rgb(0, 0, 34);
 	}
 	
 	#main {
@@ -46,10 +31,14 @@ body {
 		#actionsContainer {
 			flex: 1 1 25%;
 			padding: $container-padding;
+
+			color: white;
+			background-color: rgb(16, 16, 54);
 		}
 
 		#partyContainer {
 			flex: 1 1 50%;
+			background-color: black;
 		}
 	
 		#phoneContainer {
@@ -62,18 +51,36 @@ body {
 		padding: $container-padding;
 		display: flex;
 		justify-content: space-between;
+		align-items: center;
+
+		font-size: 12px;
+
+		color: rgb(192, 192, 192);
+		background-color: rgb(31, 31, 31);
+
+		a {
+			color: rgb(71, 102, 204);
+			text-decoration: none;
+		}
+
+		button {
+			color: white;
+			background-color: rgb(41, 41, 41);
+			border: 1px solid #74678a;
+		}
+
+		button:not(:last-child) {
+			margin-right: 6px;
+		}
 	}
 }
 
 // =================================================
 // General Styling
 // -------------------------------------------------
-body {
-	font-family: Arial, Helvetica, sans-serif;
-}
-
-h2 {
-	margin: 0;
+body,
+body * {
+	font-family: 'Montserrat', sans-serif;
 }
 
 button {
@@ -81,6 +88,7 @@ button {
 	border: 0;
 	border-radius: 12px;
 	padding: 5px 10px;
+	font-weight: 500;
 	cursor: pointer;
 }
 

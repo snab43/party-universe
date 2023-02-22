@@ -1,15 +1,5 @@
 "use strict";
-// =============================================================
-// gameInfo.ts
-// -------------------------------------------------------------
-// Baseline game info that is used for adding items and other
-// information about the game. All this data shouldn't be
-// changed.
-// -------------------------------------------------------------
-// Exports: ITEM_INFO, ITEM_STATS
-// =============================================================
 const ITEM_STATS = {
-    // Supplies
     supplies: {
         100: {
             id: "balloon",
@@ -28,8 +18,8 @@ const ITEM_STATS = {
             swag: 0
         },
         102: {
-            id: "beerPongTable",
-            name: "Beer Pong Table",
+            id: "sodaPongTable",
+            name: "Soda Pong Table",
             description: "Try playing doubles!",
             cost: 50,
             lit: 5,
@@ -76,62 +66,62 @@ const ITEM_STATS = {
             swag: 200
         }
     },
-    alcohol: {
+    drinks: {
         200: {
-            id: "beer",
-            name: "Beer",
-            description: "What IPA's do you have on tap?",
+            id: "tapWater",
+            name: "Tap Water",
+            description: "It's an essential part of life, and a party (also it's basically free).",
+            cost: 0.01,
+            lit: 1,
+            swag: 1
+        },
+        201: {
+            id: "bottledWater",
+            name: "Bottled Water",
+            description: "Straight from the mountains.",
             cost: 4,
             lit: 2,
             swag: 1
         },
-        201: {
-            id: "wine",
-            name: "Wine",
-            description: "Mom doesn't get drunk, she just has fun.",
+        202: {
+            id: "soda",
+            name: "Soda",
+            description: "Don't drink your calories.",
             cost: 12,
             lit: 1,
             swag: 5
         },
-        202: {
-            id: "hardAlcohol",
-            name: "Hard Alcohol",
-            description: "Shots! Shots! Shots!",
+        203: {
+            id: "dietSoda",
+            name: "Diet Soda",
+            description: "Now we can drink all the soda we want!",
             cost: 30,
             lit: 20,
             swag: 3
         },
-        203: {
-            id: "keg",
-            name: "Keg",
-            description: "I can handstand if you hold my legs. Just don't steal my shoes.",
+        204: {
+            id: "rootBeer",
+            name: "Root Beer",
+            description: "Let's not get too crazy here.",
             cost: 100,
             lit: 5,
             swag: 1
         },
-        204: {
-            id: "moonshine",
-            name: "Moonshine",
-            description: "This party is about to get messed up.",
+        205: {
+            id: "milk",
+            name: "Milk",
+            description: "You wouldn't think it, but milk is an essential part of all parties.",
             cost: 250,
             lit: 100,
             swag: 1
         },
-        205: {
-            id: "goldInfusedLiquor",
-            name: "Gold Infused Liquor",
+        206: {
+            id: "sparklingWater",
+            name: "Sparkling Water",
             description: "All class.",
-            cost: 500,
+            cost: 1000,
             lit: 15,
             swag: 50
-        },
-        206: {
-            id: "laBonneMerde",
-            name: "La Bonne Merde",
-            description: "It's French.",
-            cost: 2000,
-            lit: 25,
-            swag: 500
         },
         207: {
             id: "liquidMeteroite",

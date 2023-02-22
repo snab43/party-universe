@@ -1,9 +1,4 @@
 "use strict";
-// =============================================================
-// dialogue.ts
-// -------------------------------------------------------------
-// All the dialogue in the game. Reading this ruins the fun.
-// =============================================================
 const DIALOGUE_KEY = [
     `It's just you here...`,
     `Welcome back to the party!`,
@@ -108,13 +103,20 @@ const DIALOGUE_TEXT_MESSAGE = [
     `should i text her?`,
     `don't tell anyone but i saw Mr. ${chance.last()} with Mrs. ${chance.last()} last night.`,
 ];
+const DIALOGUE_PARTY_GOER_TEXT = [
+    `Thanks for inviting me to your party!`,
+    `This is my kind of party`,
+    `Where's the bathroom btw?`,
+    `i'm too nervous to dance`,
+    `thanks for the invite btw`,
+    `i'm gonna party until my shoes fall off`
+];
 const DIALOGUE_WRONG_NUMBER = [
     `Hey ${chance.first()}, can you pick up the BBQ?`,
     `Todavía no he olvidado el incidente.`,
     `ainda precisamos ir às compras`,
     `${chance.first()}, please call me...its urgent`,
     `hi this is ${chance.first()} i was just wondering if u wanted to come over for pizza, i hope this is the rite number`,
-    `hi is this ${chance.phone()}?`,
     `hello?`,
     `salom?`,
     `Need some INSTANT-CA$H right now? Get up to $${chance.integer({ min: 500, max: 1000 })}$--TODAY! Reply YES for further info, or NO for -UNSUBSCRIBE-`,

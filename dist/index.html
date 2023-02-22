@@ -2,11 +2,18 @@
 <html lang="en" dir="ltr">
 <head>
 	<meta charset="utf-8">
-	
+	<base href="./">
+
 	<title>Party Universe</title>
+
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
 	<!-- Stylesheets -->
 	<link rel="stylesheet" href="./styles/ui.css">
+	<link rel="stylesheet" href="./styles/party.css">
 	<link rel="stylesheet" href="./styles/phone.css">
 </head>
 
@@ -17,27 +24,29 @@
 		<span id="money"></span>, 
 		<span id="clout"></span></br>
 		<span id="doorFee"></span>
-		<button onclick="doorFee(1)">+$1</button>
-		<button onclick="doorFee(-1)" id="doorFeeDown">-$1</button>	
+		<button id="doorFeeUp">+$1</button>
+		<button id="doorFeeDown">-$1</button>	
 	</div>
 
 	<!-- Main -->
 	<div id="main">
 		<!-- Actions -->
 		<div id="actionsContainer">
-			<h2>Actions</h2>
-			<button onclick="digForChange()">Dig for Change</button>
-			<button onclick="sendAText()" id="sendAText">Send a Text ($0.25)</button>
-			<button onclick="kickSomeoneOut()" id="kickSomeoneOut">Kick Someone Out</button>
+			<button id="digForChange">Dig for Change</button><br/><br/>
+			<button id="sendAText">Send a Text ($0.25)</button><br/><br/>
+			<button id="kickSomeoneOut">Kick Someone Out</button><br/><br/>
+
+			<h2>Party Goers</h2>
+			<ul id="partyGoerList" style="padding: 0; list-style: none"></ul>
 		</div>
 
 		<!-- Party -->
 		<div id="partyContainer">
-
+			<canvas id="partyCanvas"></canvas>
 		</div>
 		
 		<!-- Phone -->
-		<div id="phoneContainer">
+		<div id="phoneContainer" style="background-image: none">
 			<!-- Notifications Bar -->
 			<div id="notificationsBar">
 				<div id="notificationIcons"></div>
@@ -58,7 +67,7 @@
 					<div id="createPost">
 						<h3>Create Post</h3>
 						<textarea id="statusUpdate" rows=2></textarea></br>
-						<button onclick="submitPost()">Share</button>
+						<button id="submitPostButton">Share</button>
 					</div>
 					<h3>Feed</h3>
 					<ul id="friendSpaceFeed"></ul>
@@ -71,8 +80,8 @@
 					<h3>Supplies</h3>
 					<div id="suppliesList"></div>
 					
-					<h3>Alcohol</h3>
-					<div id="alcoholList"></div>
+					<h3>Drinks</h3>
+					<div id="drinkList"></div>
 					
 					<h3>Promotions</h3>
 					<div id="promotionsList"></div>
@@ -84,27 +93,45 @@
 				<!-- Settings App -->
 				<div id="settingsApp" class="appContainer hidden" data-app="settingsApp">
 					<h2>Settings</h2>
+
+					<div class="settingsSection">
+						<h3>Time</h3>
+						<input type="checkbox" id="useMilitaryTime" name="useMilitaryTime">
+						<label for="useMilitaryTime">Use Military Time</label>
+					</div>
+
+					<div id="wallpaperPicker" class="settingsSection">
+						<h3>Wallpaper</h3>
+						<ul>
+							<li><img class="wallpaperPickerIcon" src="./images/phone-wallpaper-0.jpg" alt=""></li>
+							<li><img class="wallpaperPickerIcon" src="./images/phone-wallpaper-1.jpg" alt=""></li>
+							<li><img class="wallpaperPickerIcon" src="./images/phone-wallpaper-2.jpg" alt=""></li>
+							<li><img class="wallpaperPickerIcon" src="./images/phone-wallpaper-3.jpg" alt=""></li>
+							<li><img class="wallpaperPickerIcon" src="./images/phone-wallpaper-4.jpg" alt=""></li>
+							<li><img class="wallpaperPickerIcon" src="./images/phone-wallpaper-5.jpg" alt=""></li>
+						</ul>
+					</div>
 				</div>
 			</div>
 
 			<!-- App Library  -->
 			<div id="appLibrary">
-				<div class="appIcon"><img class="appImg" data-app="messagesApp" src="./images/app-messages.png"><span>Messages</span></div>
-				<div class="appIcon"><img class="appImg" data-app="friendSpaceApp" src="./images/app-friendspace.png"><span>FriendSpace</span></div>
-				<div class="appIcon"><img class="appImg" data-app="storeApp" src="./images/app-store.png"><span>Store</span></div>
-				<div class="appIcon"><img class="appImg" data-app="settingsApp" src="./images/app-settings.png"><span>Settings</span></div>
+				<div class="appIcon"><img class="appImg" data-app="messagesApp" src="./images/app-messages.jpg"><span>Messages</span></div>
+				<div class="appIcon"><img class="appImg" data-app="friendSpaceApp" src="./images/app-friendspace.jpg"><span>FriendSpace</span></div>
+				<div class="appIcon"><img class="appImg" data-app="storeApp" src="./images/app-store.jpg"><span>Store</span></div>
+				<div class="appIcon"><img class="appImg" data-app="settingsApp" src="./images/app-settings.jpg"><span>Settings</span></div>
 			</div>
 		</div>
 	</div>
 	
 	<!-- Game Data -->
 	<div id="gameData">
-		<div>Copyright <span id="copyrightYear"></span> - v<span id="version">0.0.1</span></div>
+		<div><a href="https://github.com/snab43/party-universe" target="_blank">GitHub</a> &#x2022; v<span id="version">0.0.2</span> &#x2022; Copyright <span id="copyrightYear"></span></div>
 		<div>
-			<button onclick="saveGame()">Save Game</button>
-			<button onclick="loadGame()">Load Game</button>
-			<button onclick="deleteSave()">Delete Save</button>
-			<button onclick="getHiddenStatsInConsole()">DEBUG: Hidden Stats in Console</button>
+			<button id="saveGameButton">Save Game</button>
+			<button id="loadGameButton">Load Game</button>
+			<button id="deleteSaveButton">Delete Save</button>
+			<button id="debugStatsButton">DEBUG: Hidden Stats in Console</button>
 		</div>
 	</div>
 
@@ -113,10 +140,8 @@
 
 	<!-- Game scripts -->
 	<script src="scripts/gameInfo.js" charset="utf-8" type="text/javascript"></script>
-	<script src="scripts/gameData.js" charset="utf-8" type="text/javascript"></script>
 	<script src="scripts/dialogue.js" charset="utf-8" type="text/javascript"></script>
-	<script src="scripts/randomEvents.js" charset="utf-8" type="text/javascript"></script>
-	<script src="scripts/app.js" charset="utf-8" type="text/javascript"></script>
-	<script src="scripts/ui.js" charset="utf-8" type="text/javascript"></script>
+	<script src="scripts/canvas.js" charset="utf-8" type="text/javascript"></script>
+	<script src="scripts/app.js" charset="utf-8" type="module"></script>
 </body>
 </html>

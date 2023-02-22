@@ -1,6 +1,6 @@
 {
   "name": "party-universe",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "An incremental game about throwing the biggest party the universe has ever seen.",
   "main": "dist/scripts/app.js",
   "directories": {
