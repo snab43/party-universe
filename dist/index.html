@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+	<meta charset="utf-8">
+	
+	<title>Party Universe</title>
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="./styles/ui.css">
+	<link rel="stylesheet" href="./styles/phone.css">
+</head>
+
+<body>
+	<!-- Stats -->
+	<div id="stats">
+		<span id="party"></span>, 
+		<span id="money"></span>, 
+		<span id="clout"></span></br>
+		<span id="doorFee"></span>
+		<button onclick="doorFee(1)">+$1</button>
+		<button onclick="doorFee(-1)" id="doorFeeDown">-$1</button>	
+	</div>
+
+	<!-- Main -->
+	<div id="main">
+		<!-- Actions -->
+		<div id="actionsContainer">
+			<h2>Actions</h2>
+			<button onclick="digForChange()">Dig for Change</button>
+			<button onclick="sendAText()" id="sendAText">Send a Text ($0.25)</button>
+			<button onclick="kickSomeoneOut()" id="kickSomeoneOut">Kick Someone Out</button>
+		</div>
+
+		<!-- Party -->
+		<div id="partyContainer">
+
+		</div>
+		
+		<!-- Phone -->
+		<div id="phoneContainer">
+			<!-- Notifications Bar -->
+			<div id="notificationsBar">
+				<div id="notificationIcons"></div>
+				<div>📶 🔋 <span id="notificationTime"></span></div>
+			</div>
+
+			<!-- App Container -->
+			<div id="appContainer">
+				<!-- Messages App -->
+				<div id="messagesApp" class="appContainer hidden" data-app="messagesApp">
+					<h2>Messages</h2>
+					<ul id="textMessages"></ul>
+				</div>
+
+				<!-- Friend Space App -->
+				<div id="friendSpaceApp" class="appContainer hidden" data-app="friendSpaceApp">
+					<h2>FriendSpace</h2>
+					<div id="createPost">
+						<h3>Create Post</h3>
+						<textarea id="statusUpdate" rows=2></textarea></br>
+						<button onclick="submitPost()">Share</button>
+					</div>
+					<h3>Feed</h3>
+					<ul id="friendSpaceFeed"></ul>
+					<p>End of feed</p>
+				</div>
+
+				<!-- Store App -->
+				<div id="storeApp" class="appContainer hidden" data-app="storeApp">
+					<h2>Store</h2>
+					<h3>Supplies</h3>
+					<div id="suppliesList"></div>
+					
+					<h3>Alcohol</h3>
+					<div id="alcoholList"></div>
+					
+					<h3>Promotions</h3>
+					<div id="promotionsList"></div>
+					
+					<h3>Venues</h3>
+					<div id="venuesList"></div>
+				</div>
+
+				<!-- Settings App -->
+				<div id="settingsApp" class="appContainer hidden" data-app="settingsApp">
+					<h2>Settings</h2>
+				</div>
+			</div>
+
+			<!-- App Library  -->
+			<div id="appLibrary">
+				<div class="appIcon"><img class="appImg" data-app="messagesApp" src="./images/app-messages.png"><span>Messages</span></div>
+				<div class="appIcon"><img class="appImg" data-app="friendSpaceApp" src="./images/app-friendspace.png"><span>FriendSpace</span></div>
+				<div class="appIcon"><img class="appImg" data-app="storeApp" src="./images/app-store.png"><span>Store</span></div>
+				<div class="appIcon"><img class="appImg" data-app="settingsApp" src="./images/app-settings.png"><span>Settings</span></div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Game Data -->
+	<div id="gameData">
+		<div>Copyright <span id="copyrightYear"></span> - v<span id="version">0.0.1</span></div>
+		<div>
+			<button onclick="saveGame()">Save Game</button>
+			<button onclick="loadGame()">Load Game</button>
+			<button onclick="deleteSave()">Delete Save</button>
+			<button onclick="getHiddenStatsInConsole()">DEBUG: Hidden Stats in Console</button>
+		</div>
+	</div>
+
+	<!-- Library scripts -->
+	<script src="scripts/chance.js" charset="utf-8" type="text/javascript"></script>
+
+	<!-- Game scripts -->
+	<script src="scripts/gameInfo.js" charset="utf-8" type="text/javascript"></script>
+	<script src="scripts/gameData.js" charset="utf-8" type="text/javascript"></script>
+	<script src="scripts/dialogue.js" charset="utf-8" type="text/javascript"></script>
+	<script src="scripts/randomEvents.js" charset="utf-8" type="text/javascript"></script>
+	<script src="scripts/app.js" charset="utf-8" type="text/javascript"></script>
+	<script src="scripts/ui.js" charset="utf-8" type="text/javascript"></script>
+</body>
+</html>

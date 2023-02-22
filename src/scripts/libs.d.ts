@@ -1,0 +1,1 @@
+const chance: ReturnType<typeof import("chance")>;

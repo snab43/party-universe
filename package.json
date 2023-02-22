@@ -1,0 +1,22 @@
+{
+  "name": "party-universe",
+  "version": "0.0.1",
+  "description": "An incremental game about throwing the biggest party the universe has ever seen.",
+  "main": "dist/scripts/app.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "build:ts": "tsc",
+    "build:scss": "sass --no-source-map src/styles:dist/styles",
+    "watch:ts": "tsc --watch",
+    "watch:scss": "sass --watch src/styles:dist/styles",
+    "watch": "npm run watch:ts && npm run watch:scss",
+    "build": "npm run build:ts && npm run build:scss"
+  },
+  "author": "snab43",
+  "license": "MIT",
+  "dependencies": {
+    "@types/chance": "^1.1.3"
+  }
+}

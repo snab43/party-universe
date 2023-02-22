@@ -1,0 +1,96 @@
+// Variables
+$stat-height: 55px;
+$gameData-height: 30px;
+$container-padding: 12px;
+
+// Debug Settings
+#stats,
+#gameData {
+	background-color: gray;
+}
+
+#actionsContainer {
+	background-color: blue;
+}
+
+#partyContainer {
+	background-color: red;
+}
+
+#phoneContainer {
+	background-color: yellow;
+}
+
+// =================================================
+// UI Layout
+// -------------------------------------------------
+html {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	height: 100vh;
+	margin: 0;
+	padding: 0;
+
+	#stats {
+		height: $stat-height;
+		padding: $container-padding;
+	}
+	
+	#main {
+		height: calc(100% - $stat-height - $gameData-height - ($container-padding * 4));
+		display: flex;
+	
+		#actionsContainer {
+			flex: 1 1 25%;
+			padding: $container-padding;
+		}
+
+		#partyContainer {
+			flex: 1 1 50%;
+		}
+	
+		#phoneContainer {
+			flex: 1 1 25%;
+		}
+	}
+	
+	#gameData {
+		height: $gameData-height;
+		padding: $container-padding;
+		display: flex;
+		justify-content: space-between;
+	}
+}
+
+// =================================================
+// General Styling
+// -------------------------------------------------
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+h2 {
+	margin: 0;
+}
+
+button {
+	background-color: white;
+	border: 0;
+	border-radius: 12px;
+	padding: 5px 10px;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #cacaca;
+}
+
+// =================================================
+// Utility Classes
+// -------------------------------------------------
+.hidden {
+	display: none;
+}

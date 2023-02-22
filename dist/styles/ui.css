@@ -1,0 +1,77 @@
+#stats,
+#gameData {
+  background-color: gray;
+}
+
+#actionsContainer {
+  background-color: blue;
+}
+
+#partyContainer {
+  background-color: red;
+}
+
+#phoneContainer {
+  background-color: yellow;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+body #stats {
+  height: 55px;
+  padding: 12px;
+}
+body #main {
+  height: calc(100% - 55px - 30px - 48px);
+  display: flex;
+}
+body #main #actionsContainer {
+  flex: 1 1 25%;
+  padding: 12px;
+}
+body #main #partyContainer {
+  flex: 1 1 50%;
+}
+body #main #phoneContainer {
+  flex: 1 1 25%;
+}
+body #gameData {
+  height: 30px;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h2 {
+  margin: 0;
+}
+
+button {
+  background-color: white;
+  border: 0;
+  border-radius: 12px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #cacaca;
+}
+
+.hidden {
+  display: none;
+}
+
+/*# sourceMappingURL=ui.css.map */

@@ -1,0 +1,158 @@
+#phoneContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  background-image: url("https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+  background-position: center;
+  background-size: cover;
+}
+#phoneContainer #notificationsBar {
+  color: white;
+  padding: 6px 12px;
+  font-size: 11px;
+  font-weight: 800;
+  display: flex;
+  justify-content: space-between;
+}
+#phoneContainer #appContainer {
+  height: 100%;
+  margin: 0 12px 12px 12px;
+  overflow: hidden;
+}
+#phoneContainer #appContainer .appContainer {
+  color: white;
+  background-color: black;
+  height: calc(100% - 24px);
+  border-radius: 22px;
+  padding: 12px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+#phoneContainer #appContainer .appContainer h2 {
+  margin-top: 0;
+  text-align: center;
+}
+#phoneContainer #appContainer #messagesApp {
+  color: white;
+  background: black;
+}
+#phoneContainer #appContainer #messagesApp > h2 {
+  color: lightgray;
+}
+#phoneContainer #appContainer #messagesApp > #textMessages {
+  padding: 0px;
+  list-style: none;
+}
+#phoneContainer #appContainer #messagesApp > #textMessages li {
+  color: white;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+}
+#phoneContainer #appContainer #messagesApp > #textMessages li p {
+  font-size: 14px;
+  margin: 6px 0;
+}
+#phoneContainer #appContainer #messagesApp > #textMessages li small {
+  color: lightgray;
+  text-align: right;
+}
+#phoneContainer #appContainer #messagesApp .acceptanceMessage {
+  background: darkgreen;
+}
+#phoneContainer #appContainer #messagesApp .rejectionMessage {
+  background: darkred;
+}
+#phoneContainer #appContainer #messagesApp .keyMessage {
+  background: darkblue;
+}
+#phoneContainer #appContainer #messagesApp .defaultMessage {
+  background: #404040;
+}
+#phoneContainer #appContainer #friendSpaceApp {
+  color: black;
+  background: lightblue;
+}
+#phoneContainer #appContainer #friendSpaceApp > h2 {
+  color: darkblue;
+}
+#phoneContainer #appContainer #friendSpaceApp > #createPost {
+  margin-bottom: 20px;
+}
+#phoneContainer #appContainer #friendSpaceApp > #createPost > h3 {
+  margin: 10px 0;
+}
+#phoneContainer #appContainer #friendSpaceApp > #createPost > textarea {
+  width: calc(100% - 24px);
+  margin-bottom: 8px;
+  border: none;
+  overflow: auto;
+  outline: none;
+  resize: none;
+  padding: 12px;
+  border-radius: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+#phoneContainer #appContainer #friendSpaceApp > #createPost > button {
+  color: white;
+  background-color: darkblue;
+  width: 100%;
+}
+#phoneContainer #appContainer #friendSpaceApp > ul {
+  padding: 0px;
+  list-style: none;
+}
+#phoneContainer #appContainer #friendSpaceApp > ul li {
+  background: white;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+}
+#phoneContainer #appContainer #friendSpaceApp > ul li b {
+  color: darkblue;
+}
+#phoneContainer #appContainer #friendSpaceApp > ul li p {
+  font-size: 14px;
+  margin: 6px 0;
+}
+#phoneContainer #appContainer #friendSpaceApp > ul li small {
+  color: grey;
+}
+#phoneContainer #appContainer #friendSpaceApp > p {
+  text-align: center;
+  color: #646464;
+}
+#phoneContainer #appLibrary {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 0 12px 12px 12px;
+  padding: 6px;
+  border-radius: 22px;
+  color: white;
+  background: rgb(176, 172, 255);
+  background: linear-gradient(0deg, rgba(107, 107, 122, 0.75) 0%, rgba(102, 102, 102, 0.5) 100%);
+  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+}
+#phoneContainer #appLibrary .appIcon {
+  flex: 1 1 25%;
+  height: 80px;
+  text-align: center;
+  padding: 6px;
+}
+#phoneContainer #appLibrary .appIcon .activeApp {
+  box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.25);
+}
+#phoneContainer #appLibrary .appIcon > img {
+  width: 60px;
+  height: 60px;
+  border-radius: 14px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+#phoneContainer #appLibrary .appIcon > span {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/*# sourceMappingURL=phone.css.map */

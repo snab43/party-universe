@@ -1,0 +1,200 @@
+#phoneContainer {
+	display: flex;
+	flex-direction: column;
+	background-color: black;
+	background-image: url("https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+	background-position: center;
+	background-size: cover;
+
+	// =================================================
+	// Notification Bar
+	// -------------------------------------------------
+	#notificationsBar {
+		color: white;
+		padding: 6px 12px;
+		font-size: 11px;
+		font-weight: 800;
+		display: flex;
+		justify-content: space-between;
+	}
+
+	// =================================================
+	// App Containers
+	// -------------------------------------------------
+	#appContainer {
+		height: 100%;
+		margin: 0 12px 12px 12px;
+		overflow: hidden;
+
+		.appContainer {
+			color: white;
+			background-color: black;
+			height: calc(100% - 24px);
+			border-radius: 22px;
+			padding: 12px;
+			overflow-y: scroll;
+			overflow-x: hidden;
+
+			h2 {
+				margin-top: 0;
+				text-align: center;
+			}
+		}
+
+		// Messages App
+		#messagesApp {
+			color: white;
+			background: black;
+
+			> h2 {
+				color: lightgray;
+			}
+
+			> #textMessages {
+				padding: 0px;
+				list-style: none;
+
+				li {
+					color: white;
+					padding: 12px;
+					margin-bottom: 12px;
+					border-radius: 12px;
+
+					p {
+						font-size: 14px;
+						margin: 6px 0;
+					}
+
+					small {
+						color: lightgray;
+						text-align: right;
+					}
+				}
+			}
+
+			.acceptanceMessage {
+				background: darkgreen;
+			}
+			
+			.rejectionMessage {
+				background: darkred;
+			}
+			
+			.keyMessage {
+				background: darkblue;
+			}
+			
+			.defaultMessage {
+				background: #404040;
+			}
+		}
+
+		// FriendSpace App
+		#friendSpaceApp {
+			color: black;
+			background: lightblue;
+
+			> h2 {
+				color: darkblue;
+			}
+
+			> #createPost {
+				margin-bottom: 20px;
+
+				> h3 {
+					margin: 10px 0;
+				}
+
+				> textarea {
+					width: calc(100% - 24px);
+					margin-bottom: 8px;
+					border: none;
+					overflow: auto;
+					outline: none;
+					resize: none;
+					padding: 12px;
+					border-radius: 12px;
+					font-family: Arial, Helvetica, sans-serif;
+					font-size: 14px;
+				}
+
+				> button {
+					color: white;
+					background-color: darkblue;
+					width: 100%;
+				}
+			}
+
+			> ul {
+				padding: 0px;
+				list-style: none;
+
+				li {
+					background: white;
+					padding: 12px;
+					margin-bottom: 12px;
+					border-radius: 12px;
+
+					b {
+						color: darkblue;
+					}
+
+					p {
+						font-size: 14px;
+						margin: 6px 0;
+					}
+
+					small {
+						color: grey;
+					}
+				}
+			}
+
+			> p {
+				text-align: center;
+				color: #646464;
+			}
+		}
+	}
+
+	// =================================================
+	// App Library
+	// -------------------------------------------------
+	#appLibrary {
+		display: flex;
+		justify-content: space-evenly;
+		margin: 0 12px 12px 12px;
+		padding: 6px;
+		border-radius: 22px;
+
+		color: white;
+		background: rgb(176,172,255);
+		background: linear-gradient(0deg, rgba(107, 107, 122, 0.75) 0%, rgba(102, 102, 102, 0.5) 100%); 
+		text-shadow: 0px 0px 5px rgba(0,0,0,0.5);
+
+		.appIcon {
+			flex: 1 1 25%;
+			height: 80px;
+			text-align: center;
+			padding: 6px;
+
+
+			.activeApp {
+				box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.25);
+			}
+
+			> img {
+				width: 60px;
+				height: 60px;
+				border-radius: 14px;
+				box-shadow: 0px 0px 10px rgba(0,0,0,0.15);
+				cursor: pointer;
+			}
+
+			> span {
+				font-size: 12px;
+				font-weight: 700;
+			}
+		}
+	}
+}
