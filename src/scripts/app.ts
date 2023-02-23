@@ -1,8 +1,3 @@
-// =============================================================
-// app.ts
-// -------------------------------------------------------------
-// This is where the heart of the game lies.
-// =============================================================
 import { SaveFile } from './models/saveFile.js'
 
 let gameSave = new SaveFile();
@@ -34,8 +29,7 @@ function deleteSave() {
 
 // DEBUG
 function getHiddenStatsInConsole() {
-	console.log(`karma: ${gameSave.karma}\nluck: ${gameSave.luck}\ndigForChangeMod: ${gameSave.digForChangeMod}\ninviteMod: ${gameSave.inviteMod}\nClout: ${Utilities.calculateClout(gameSave.party, gameSave.money)}`
-	)
+	console.log(gameSave.getSaveObject());
 }
 
 
@@ -54,7 +48,6 @@ function loadUI() {
 
 	// Party
 	document.getElementById("partyGoerListButton")!.addEventListener("click", UI.togglePartyGoerList, false);
-	document.getElementById("partyGoerListExit")!.addEventListener("click", UI.togglePartyGoerList, false);
 
 	// Phone
 	document.getElementById("submitPostButton")!.addEventListener("click", submitPost, false);
@@ -63,7 +56,7 @@ function loadUI() {
 	// Phone Apps
 	Array.from(document.getElementsByClassName("appImg")).forEach(element => {
 		element.addEventListener('click', event => {
-			UI.openApp(<HTMLImageElement>event.target);
+			UI.toggleApp(<HTMLImageElement>event.target);
 		});
 	});
 
@@ -81,6 +74,20 @@ function loadUI() {
 	document.getElementById("deleteSaveButton")!.addEventListener("click", deleteSave, false);
 	document.getElementById("debugStatsButton")!.addEventListener("click", getHiddenStatsInConsole, false);
 	
+	// Modals
+	Array.from(document.getElementsByClassName("modal")).forEach(element => {
+		element.addEventListener('click', event => {
+			if (event.target == element) {
+				element.classList.add("hidden");
+			}
+		});
+	});
+	Array.from(document.getElementsByClassName("modalExit")).forEach(element => {
+		element.addEventListener('click', event => {
+			element.parentElement!.parentElement!.classList.add("hidden");
+		});
+	})
+
 	// Copyright + Version
 	document.getElementById("copyrightYear")!.innerText = <string><unknown>(new Date()).getFullYear();
 	document.getElementById("version")!.innerText = GAME_VERSION;
@@ -281,7 +288,8 @@ function buyVenues(id: number) {
 function updateUI() {
 	UI.updateStatDisplay(gameSave.party, gameSave.partyCapacity, gameSave.money, Utilities.calculateClout(gameSave.party, gameSave.money));
 	UI.updatePartyList(gameSave.partyGoers);
-	//UI.updateStore(gameSave.totalMoney);
+	UI.updateStore(gameSave.totalMoney);
+	UI.updateTime(gameSave.militaryTime);
 }
 
 

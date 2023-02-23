@@ -1,4 +1,8 @@
 namespace UI {
+	let friendSpaceNotifications: number = 0;
+	let messagesNotifications: number = 0;
+	let storeNotifications: number = 0;
+
 	export function updateStatDisplay(party: number, partyCapacity: number, money: number, clout: number): void {
 		//updateButtons();
 		//updateClout();
@@ -28,7 +32,6 @@ namespace UI {
 
 		Array.from(storeLists).forEach(storeList => {
 			storeList.innerHTML = '';
-			//console.log(element);
 			let dataType = storeList.getAttribute("data-type");
 			let data: any[];
 
@@ -44,6 +47,8 @@ namespace UI {
 
 			Array.from(data!).forEach(item => {
 				if (item.cost < totalMoney) {
+					//appNotification("storeApp");
+
 					let itemElement = document.createElement("LI");
 					itemElement.id = item.id;
 					itemElement.classList.add('storeItem');
@@ -64,7 +69,27 @@ namespace UI {
 		document.getElementById("partyGoerListContainer")!.classList.toggle("hidden");
 	}
 
-	export function openApp(appIcon: HTMLImageElement) {
+	export function toggleApp(appIcon: HTMLImageElement) {
+		// Clear app icon badge and notification bar icon
+		let dataApp = appIcon.getAttribute("data-app");
+		document.querySelector(`.appIconBadge[data-app="${dataApp}"]`)?.classList.add("hidden");
+		document.querySelector(`.fa-solid[data-app="${dataApp}"]`)?.classList.add("hidden");
+
+		switch (dataApp) {
+			case "messagesApp": messagesNotifications = 0; break;
+			case "friendSpaceApp": friendSpaceNotifications = 0; break;
+			case "storeApp": storeNotifications = 0; break;
+		}
+
+		if (dataApp == "messagesApp" && !(document.querySelector(`.appContainer[data-app="messagesApp"]`)?.classList.contains('hidden'))) {
+			document.getElementById("oldMessagesHeader")?.remove();
+		}
+
+		if (dataApp == "friendSpaceApp" && !(document.querySelector(`.appContainer[data-app="friendSpaceApp"]`)?.classList.contains('hidden'))) {
+			document.getElementById("oldPostsHeader")?.remove();
+		}
+
+		// Hide other apps and display app
 		let appContainers = document.getElementsByClassName("appContainer");
 
 		Array.from(appContainers).forEach(appContainer => {
@@ -77,9 +102,40 @@ namespace UI {
 		});
 	}
 
+	export function appNotification(dataApp: string) {
+		if (document.querySelector(`.appContainer[data-app="${dataApp}"]`)!.classList.contains('hidden')) {
+			let amount: number = 0;
+
+			switch (dataApp) {
+				case "messagesApp":
+					messagesNotifications += 1;
+					amount = messagesNotifications;
+					break;
+				case "friendSpaceApp":
+					friendSpaceNotifications += 1;
+					amount = friendSpaceNotifications;
+					break;
+				case "storeApp":
+					storeNotifications += 1;
+					amount = storeNotifications;
+					break;
+			}
+
+			let appIconBadge = document.querySelector(`.appIconBadge[data-app="${dataApp}"]`)!;
+			appIconBadge.classList.remove("hidden");
+			appIconBadge.textContent = `${amount}`;
+
+			document.querySelector(`.fa-solid[data-app="${dataApp}"]`)?.classList.remove("hidden");
+		}
+	}
+
 	export function changeWallpaper(wallpaperPickerIcon: HTMLImageElement) {
 		let phoneContainer = document.getElementById("phoneContainer")!;
 		phoneContainer.style.backgroundImage = `url('${wallpaperPickerIcon.src}')`;
+	}
+
+	export function updateTime(militaryTime: boolean) {
+		document.getElementById("notificationTime")!.innerText = Utilities.getHourMinuteTimeStamp(militaryTime);
 	}
 	
 	export function updateButtons() {

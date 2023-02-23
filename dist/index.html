@@ -56,12 +56,6 @@
 
 		<!-- Party -->
 		<div id="partyContainer">
-			<div id="partyGoerListContainer" class="hidden">
-				<div class="exitButton" id="partyGoerListExit"><i class="fa-solid fa-xmark"></i></div>
-				<h2>Party Goers</h2>
-				<ul id="partyGoerList" style="padding: 0; list-style: none"></ul>
-			</div>
-
 			<div id="partyCamOverlay">PARTY CAM 1</div>
 			
 			<div id="partyCamOverlayBars">
@@ -81,8 +75,17 @@
 		<div id="phoneContainer" style="background-image: none">
 			<!-- Notifications Bar -->
 			<div id="notificationsBar">
-				<div id="notificationIcons"></div>
-				<div>📶 🔋 <span id="notificationTime"></span></div>
+				<div id="notificationBarLeft">
+					<i class="fa-solid fa-message hidden" data-app="messagesApp"></i>
+					<i class="fa-solid fa-face-smile hidden" data-app="friendSpaceApp"></i>
+					<i class="fa-solid fa-cart-shopping hidden" data-app="storeApp"></i>
+				</div>
+				<div id="notificationBarRight">
+					<i class="fa-solid fa-signal"></i>
+					<i class="fa-solid fa-wifi"></i>
+					<i class="fa-solid fa-battery-full"></i>
+					<span id="notificationTime"></span>
+				</div>
 			</div>
 
 			<!-- App Container -->
@@ -90,7 +93,7 @@
 				<!-- Messages App -->
 				<div id="messagesApp" class="appContainer hidden" data-app="messagesApp">
 					<h2>Messages</h2>
-					<ul id="textMessages"></ul>
+					<ul id="textMessages" class="list-unstyled"></ul>
 				</div>
 
 				<!-- Friend Space App -->
@@ -98,11 +101,11 @@
 					<h2>FriendSpace</h2>
 					<div id="createPost">
 						<h3>Create Post</h3>
-						<textarea id="statusUpdate" rows=2></textarea></br>
+						<textarea id="statusUpdate" rows=2 maxlength="280"></textarea></br>
 						<button id="submitPostButton">Share</button>
 					</div>
 					<h3>Feed</h3>
-					<ul id="friendSpaceFeed"></ul>
+					<ul id="friendSpaceFeed" class="list-unstyled"></ul>
 					<p>End of feed</p>
 				</div>
 
@@ -112,32 +115,32 @@
 
 					<div class="storeListContainer">
 						<h3>Food</h3>
-						<ul class="storeList" data-type="food"></ul>
+						<ul class="storeList list-unstyled" data-type="food"></ul>
 					</div>
 					
 					<div class="storeListContainer">
 						<h3>Drinks</h3>
-						<ul class="storeList" data-type="drinks"></ul>
+						<ul class="storeList list-unstyled" data-type="drinks"></ul>
 					</div>
 
 					<div class="storeListContainer">
 						<h3>Decorations</h3>
-						<ul class="storeList" data-type="decorations"></ul>
+						<ul class="storeList list-unstyled" data-type="decorations"></ul>
 					</div>
 
 					<div class="storeListContainer">
 						<h3>Activities</h3>
-						<ul class="storeList" data-type="activities"></ul>
+						<ul class="storeList list-unstyled" data-type="activities"></ul>
 					</div>
 					
 					<div class="storeListContainer">
 						<h3>Promotions</h3>
-						<ul class="storeList" data-type="promotions"></ul>
+						<ul class="storeList list-unstyled" data-type="promotions"></ul>
 					</div>
 					
 					<div class="storeListContainer">
 						<h3>Venues</h3>
-						<ul class="storeList" data-type="venues"></ul>
+						<ul class="storeList list-unstyled" data-type="venues"></ul>
 					</div>
 				</div>
 
@@ -153,7 +156,7 @@
 
 					<div id="wallpaperPicker" class="settingsSection">
 						<h3>Wallpaper</h3>
-						<ul>
+						<ul class="list-unstyled">
 							<li><img class="wallpaperPickerIcon" src="./images/phone-wallpaper-0.jpg" alt=""></li>
 							<li><img class="wallpaperPickerIcon" src="./images/phone-wallpaper-1.jpg" alt=""></li>
 							<li><img class="wallpaperPickerIcon" src="./images/phone-wallpaper-2.jpg" alt=""></li>
@@ -167,22 +170,46 @@
 
 			<!-- App Library  -->
 			<div id="appLibrary">
-				<div class="appIcon"><img class="appImg" data-app="messagesApp" src="./images/app-messages.jpg"><span>Messages</span></div>
-				<div class="appIcon"><img class="appImg" data-app="friendSpaceApp" src="./images/app-friendspace.jpg"><span>FriendSpace</span></div>
-				<div class="appIcon"><img class="appImg" data-app="storeApp" src="./images/app-store.jpg"><span>Store</span></div>
-				<div class="appIcon"><img class="appImg" data-app="settingsApp" src="./images/app-settings.jpg"><span>Settings</span></div>
+				<div class="appIcon">
+					<img class="appImg" data-app="messagesApp" src="./images/app-messages.jpg">
+					<span>Messages</span>
+					<div class="appIconBadge hidden" data-app="messagesApp"></div>
+				</div>
+				<div class="appIcon">
+					<img class="appImg" data-app="friendSpaceApp" src="./images/app-friendspace.jpg">
+					<span>FriendSpace</span>
+					<div class="appIconBadge hidden" data-app="friendSpaceApp"></div>
+				</div>
+				<div class="appIcon">
+					<img class="appImg" data-app="storeApp" src="./images/app-store.jpg">
+					<span>Store</span>
+					<div class="appIconBadge hidden" data-app="storeApp"></div>
+				</div>
+				<div class="appIcon">
+					<img class="appImg" data-app="settingsApp" src="./images/app-settings.jpg">
+					<span>Settings</span>
+				</div>
 			</div>
 		</div>
 	</div>
 	
 	<!-- Game Data -->
 	<div id="gameData">
-		<div><a href="https://github.com/snab43/party-universe" target="_blank">GitHub</a> &#x2022; v<span id="version"></span> &#x2022; Copyright <span id="copyrightYear"></span></div>
-		<div>
+		<div id="copyrightInfo"><a href="https://github.com/snab43/party-universe" target="_blank">GitHub</a> &#x2022; v<span id="version"></span> &#x2022; Copyright <span id="copyrightYear"></span><br/>Expect things to break. Click "Delete Save" if you have any issues.</div>
+		<div id="gameDataButtons">
 			<button id="saveGameButton">Save Game</button>
 			<button id="loadGameButton">Load Game</button>
 			<button id="deleteSaveButton">Delete Save</button>
-			<button id="debugStatsButton">DEBUG: Hidden Stats in Console</button>
+			<button id="debugStatsButton">DEBUG: Console Log Save File</button>
+		</div>
+	</div>
+
+	<!-- Modals -->
+	<div id="partyGoerListContainer" class="modal hidden">
+		<div class="modalContent">
+			<div class="modalExit"><i class="fa-solid fa-xmark"></i></div>
+			<h2>Party Goers</h2>
+			<ul id="partyGoerList" class="list-unstyled"></ul>
 		</div>
 	</div>
 

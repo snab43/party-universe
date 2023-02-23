@@ -1,4 +1,7 @@
 namespace randomEvents {
+	// =============================================================
+	// FriendSpace Post
+	// -------------------------------------------------------------
 	export function friendSpacePost(militaryTime: boolean) {
 		// FriendSpace update
 		if (Math.random() <= 1/100) {
@@ -8,6 +11,7 @@ namespace randomEvents {
 				DIALOGUE_FRIENDSPACE_POST[Math.floor(Math.random()*DIALOGUE_FRIENDSPACE_POST.length)],
 				militaryTime
 			);
+			UI.appNotification("friendSpaceApp");
 		}
 		
 		// FriendSpace ad
@@ -18,9 +22,13 @@ namespace randomEvents {
 				DIALOGUE_FRIENDSPACE_AD[Math.floor(Math.random()*DIALOGUE_FRIENDSPACE_AD.length)],
 				militaryTime
 			);
+			UI.appNotification("friendSpaceApp");
 		}
 	}
 
+	// =============================================================
+	// Receive Text Message
+	// -------------------------------------------------------------
 	export function textMessage(partyGoers: string[], militaryTime: boolean) {
 		// Text from party goer
 		if (Math.random() <= 1/75) {
@@ -30,6 +38,7 @@ namespace randomEvents {
 				MessageType.Party,
 				militaryTime
 			);
+			UI.appNotification("messagesApp");
 		}
 
 		// Text message
@@ -40,6 +49,7 @@ namespace randomEvents {
 				MessageType.Default,
 				militaryTime
 			);
+			UI.appNotification("messagesApp");
 		}
 		
 		// Wrong number message
@@ -50,6 +60,7 @@ namespace randomEvents {
 				MessageType.Default,
 				militaryTime
 			);
+			UI.appNotification("messagesApp");
 		}
 	}
 		

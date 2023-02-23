@@ -16,7 +16,7 @@ function deleteSave() {
     location.reload();
 }
 function getHiddenStatsInConsole() {
-    console.log(`karma: ${gameSave.karma}\nluck: ${gameSave.luck}\ndigForChangeMod: ${gameSave.digForChangeMod}\ninviteMod: ${gameSave.inviteMod}\nClout: ${Utilities.calculateClout(gameSave.party, gameSave.money)}`);
+    console.log(gameSave.getSaveObject());
 }
 function loadUI() {
     document.getElementById("doorFeeUp").addEventListener("click", changeDoorFeeUp, false);
@@ -25,12 +25,11 @@ function loadUI() {
     document.getElementById("sendAText").addEventListener("click", sendAText, false);
     document.getElementById("kickSomeoneOut").addEventListener("click", kickSomeoneOut, false);
     document.getElementById("partyGoerListButton").addEventListener("click", UI.togglePartyGoerList, false);
-    document.getElementById("partyGoerListExit").addEventListener("click", UI.togglePartyGoerList, false);
     document.getElementById("submitPostButton").addEventListener("click", submitPost, false);
     document.getElementById("phoneContainer").style.backgroundImage = `url('${gameSave.phoneBackgroundImage}')`;
     Array.from(document.getElementsByClassName("appImg")).forEach(element => {
         element.addEventListener('click', event => {
-            UI.openApp(event.target);
+            UI.toggleApp(event.target);
         });
     });
     Array.from(document.getElementsByClassName("wallpaperPickerIcon")).forEach(element => {
@@ -43,6 +42,18 @@ function loadUI() {
     document.getElementById("loadGameButton").addEventListener("click", loadGame, false);
     document.getElementById("deleteSaveButton").addEventListener("click", deleteSave, false);
     document.getElementById("debugStatsButton").addEventListener("click", getHiddenStatsInConsole, false);
+    Array.from(document.getElementsByClassName("modal")).forEach(element => {
+        element.addEventListener('click', event => {
+            if (event.target == element) {
+                element.classList.add("hidden");
+            }
+        });
+    });
+    Array.from(document.getElementsByClassName("modalExit")).forEach(element => {
+        element.addEventListener('click', event => {
+            element.parentElement.parentElement.classList.add("hidden");
+        });
+    });
     document.getElementById("copyrightYear").innerText = (new Date()).getFullYear();
     document.getElementById("version").innerText = GAME_VERSION;
     updateUI();
@@ -132,6 +143,8 @@ function submitPost() {
 function updateUI() {
     UI.updateStatDisplay(gameSave.party, gameSave.partyCapacity, gameSave.money, Utilities.calculateClout(gameSave.party, gameSave.money));
     UI.updatePartyList(gameSave.partyGoers);
+    UI.updateStore(gameSave.totalMoney);
+    UI.updateTime(gameSave.militaryTime);
 }
 let mainGameLoop = window.setInterval(function () {
     updateUI();

@@ -1,6 +1,6 @@
 "use strict";
 const TEXT_COST = 0.25;
-const GAME_VERSION = '0.0.3';
+const GAME_VERSION = '0.0.4';
 const FOOD_STATS = [
     {
         id: "nachos",

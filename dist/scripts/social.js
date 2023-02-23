@@ -10,7 +10,21 @@ var Social;
 			<small>${Utilities.getHourMinuteTimeStamp(militaryTime)} &#8226; SMS
 		`;
         let list = document.getElementById("textMessages");
-        list.insertBefore(newItem, list.childNodes[0]);
+        if (document.querySelector(`.appContainer[data-app="messagesApp"]`).classList.contains('hidden')) {
+            if (document.getElementById("oldMessagesHeader")) {
+                list.insertBefore(newItem, list.childNodes[0]);
+            }
+            else {
+                let oldMessageHeader = document.createElement("LI");
+                oldMessageHeader.id = "oldMessagesHeader";
+                oldMessageHeader.innerHTML = `<h3>Older Messages</h3>`;
+                list.insertBefore(oldMessageHeader, list.childNodes[0]);
+                list.insertBefore(newItem, list.childNodes[0]);
+            }
+        }
+        else {
+            list.insertBefore(newItem, list.childNodes[0]);
+        }
     }
     Social.updateTextMessage = updateTextMessage;
     function updateFriendSpaceFeed(name, locationFrom, message, militaryTime) {
@@ -22,7 +36,21 @@ var Social;
 			<small>Like &#8226; Comment &#8226; Share
 		`;
         let list = document.getElementById("friendSpaceFeed");
-        list.insertBefore(newItem, list.childNodes[0]);
+        if (document.querySelector(`.appContainer[data-app="friendSpaceApp"]`).classList.contains('hidden')) {
+            if (document.getElementById("oldPostsHeader")) {
+                list.insertBefore(newItem, list.childNodes[0]);
+            }
+            else {
+                let oldPostHeader = document.createElement("LI");
+                oldPostHeader.id = "oldPostsHeader";
+                oldPostHeader.innerHTML = `<h3>Older Posts</h3>`;
+                list.insertBefore(oldPostHeader, list.childNodes[0]);
+                list.insertBefore(newItem, list.childNodes[0]);
+            }
+        }
+        else {
+            list.insertBefore(newItem, list.childNodes[0]);
+        }
     }
     Social.updateFriendSpaceFeed = updateFriendSpaceFeed;
 })(Social || (Social = {}));

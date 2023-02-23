@@ -1,6 +1,9 @@
 "use strict";
 var UI;
 (function (UI) {
+    let friendSpaceNotifications = 0;
+    let messagesNotifications = 0;
+    let storeNotifications = 0;
     function updateStatDisplay(party, partyCapacity, money, clout) {
         document.getElementById("party").innerHTML = `${party} / ${partyCapacity}`;
         document.getElementById("money").innerHTML = `$${money.toFixed(2)}`;
@@ -72,7 +75,28 @@ var UI;
         document.getElementById("partyGoerListContainer").classList.toggle("hidden");
     }
     UI.togglePartyGoerList = togglePartyGoerList;
-    function openApp(appIcon) {
+    function toggleApp(appIcon) {
+        var _a, _b, _c, _d, _e, _f;
+        let dataApp = appIcon.getAttribute("data-app");
+        (_a = document.querySelector(`.appIconBadge[data-app="${dataApp}"]`)) === null || _a === void 0 ? void 0 : _a.classList.add("hidden");
+        (_b = document.querySelector(`.fa-solid[data-app="${dataApp}"]`)) === null || _b === void 0 ? void 0 : _b.classList.add("hidden");
+        switch (dataApp) {
+            case "messagesApp":
+                messagesNotifications = 0;
+                break;
+            case "friendSpaceApp":
+                friendSpaceNotifications = 0;
+                break;
+            case "storeApp":
+                storeNotifications = 0;
+                break;
+        }
+        if (dataApp == "messagesApp" && !((_c = document.querySelector(`.appContainer[data-app="messagesApp"]`)) === null || _c === void 0 ? void 0 : _c.classList.contains('hidden'))) {
+            (_d = document.getElementById("oldMessagesHeader")) === null || _d === void 0 ? void 0 : _d.remove();
+        }
+        if (dataApp == "friendSpaceApp" && !((_e = document.querySelector(`.appContainer[data-app="friendSpaceApp"]`)) === null || _e === void 0 ? void 0 : _e.classList.contains('hidden'))) {
+            (_f = document.getElementById("oldPostsHeader")) === null || _f === void 0 ? void 0 : _f.remove();
+        }
         let appContainers = document.getElementsByClassName("appContainer");
         Array.from(appContainers).forEach(appContainer => {
             if (appContainer.getAttribute("data-app") == appIcon.getAttribute("data-app")) {
@@ -83,12 +107,41 @@ var UI;
             }
         });
     }
-    UI.openApp = openApp;
+    UI.toggleApp = toggleApp;
+    function appNotification(dataApp) {
+        var _a;
+        if (document.querySelector(`.appContainer[data-app="${dataApp}"]`).classList.contains('hidden')) {
+            let amount = 0;
+            switch (dataApp) {
+                case "messagesApp":
+                    messagesNotifications += 1;
+                    amount = messagesNotifications;
+                    break;
+                case "friendSpaceApp":
+                    friendSpaceNotifications += 1;
+                    amount = friendSpaceNotifications;
+                    break;
+                case "storeApp":
+                    storeNotifications += 1;
+                    amount = storeNotifications;
+                    break;
+            }
+            let appIconBadge = document.querySelector(`.appIconBadge[data-app="${dataApp}"]`);
+            appIconBadge.classList.remove("hidden");
+            appIconBadge.textContent = `${amount}`;
+            (_a = document.querySelector(`.fa-solid[data-app="${dataApp}"]`)) === null || _a === void 0 ? void 0 : _a.classList.remove("hidden");
+        }
+    }
+    UI.appNotification = appNotification;
     function changeWallpaper(wallpaperPickerIcon) {
         let phoneContainer = document.getElementById("phoneContainer");
         phoneContainer.style.backgroundImage = `url('${wallpaperPickerIcon.src}')`;
     }
     UI.changeWallpaper = changeWallpaper;
+    function updateTime(militaryTime) {
+        document.getElementById("notificationTime").innerText = Utilities.getHourMinuteTimeStamp(militaryTime);
+    }
+    UI.updateTime = updateTime;
     function updateButtons() {
         let percentToReveal = 2;
     }
