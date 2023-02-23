@@ -1,1 +1,1 @@
-const chance: ReturnType<typeof import("chance")>;
+let chance: ReturnType<typeof import("chance")>;

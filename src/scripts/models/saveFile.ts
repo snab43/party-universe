@@ -5,335 +5,195 @@
 // seen as the save data.
 // =============================================================
 
-const DEFAULT_SUPPLIES = {
-	100: {
-		amount: 0,
-		amountMod: 1,
-		costMod: 1
-	},
-	101: {
-		amount: 0,
-		amountMod: 1,
-		costMod: 1
-	},
-	102: {
-		amount: 0,
-		amountMod: 1,
-		costMod: 1
-	},
-	103: {
-		amount: 0,
-		amountMod: 1,
-		costMod: 1
-	},
-	104: {
-		amount: 0,
-		amountMod: 1,
-		costMod: 1
-	},
-	105: {
-		amount: 0,
-		amountMod: 1,
-		costMod: 1
-	},
-	106: {
-		amount: 0,
-		amountMod: 1,
-		costMod: 1
-	},
-	107: {
-		amount: 0,
-		amountMod: 1,
-		costMod: 1
-	}
-}
-
-const DEFAULT_DRINKS = {
-	200: {
-		amount: 0,
-		amountMod: 1,
-		costMod: 1
-	},
-	201: {
-		amount: 0,
-		amountMod: 1,
-		costMod: 1
-	},
-	202: {
-		amount: 0,
-		amountMod: 1,
-		costMod: 1
-	},
-	203: {
-		amount: 0,
-		amountMod: 1,
-		costMod: 1
-	},
-	204: {
-		amount: 0,
-		amountMod: 1,
-		costMod: 1
-	},
-	205: {
-		amount: 0,
-		amountMod: 1,
-		costMod: 1
-	},
-	206: {
-		amount: 0,
-		amountMod: 1,
-		costMod: 1
-	},
-	207: {
-		amount: 0,
-		amountMod: 1,
-		costMod: 1
-	}
-}
-
-const DEFAULT_PROMOTIONS = {
-	300: {
-		amount: 0,
-		currentDuration: 0,
-		amountMod: 1,
-		costMod: 1,
-		durationMod: 1,
-		pullMod: 1
-	},
-	301: {
-		amount: 0,
-		currentDuration: 0,
-		amountMod: 1,
-		costMod: 1,
-		durationMod: 1,
-		pullMod: 1
-	},
-	302: {
-		amount: 0,
-		currentDuration: 0,
-		amountMod: 1,
-		costMod: 1,
-		durationMod: 1,
-		pullMod: 1
-	},
-	303: {
-		amount: 0,
-		currentDuration: 0,
-		amountMod: 1,
-		costMod: 1,
-		durationMod: 1,
-		pullMod: 1
-	},
-	304: {
-		amount: 0,
-		currentDuration: 0,
-		amountMod: 1,
-		costMod: 1,
-		durationMod: 1,
-		pullMod: 1
-	},
-	305: {
-		amount: 0,
-		currentDuration: 0,
-		amountMod: 1,
-		costMod: 1,
-		durationMod: 1,
-		pullMod: 1
-	}
-}
-
-const DEFAULT_VENUES = {
-	400: {
-		amount: 0,
-		amountMod: 1,
-		costMod: 1,
-		capacityMod: 1
-	},
-	401: {
-		amount: 0,
-		amountMod: 1,
-		costMod: 1,
-		capacityMod: 1
-	},
-	402: {
-		amount: 0,
-		amountMod: 1,
-		costMod: 1,
-		capacityMod: 1
-	},
-	403: {
-		amount: 0,
-		amountMod: 1,
-		costMod: 1,
-		capacityMod: 1
-	},
-	404: {
-		amount: 0,
-		amountMod: 1,
-		costMod: 1,
-		capacityMod: 1
-	},
-	405: {
-		amount: 0,
-		amountMod: 1,
-		costMod: 1,
-		capacityMod: 1
-	},
-	406: {
-		amount: 0,
-		amountMod: 1,
-		costMod: 1,
-		capacityMod: 1
-	}
-}
-
 export class SaveFile {
+	// Info
+	name: string = 'You';
+	partyName: string = 'The Party';
+	gender: number = Gender.None;
+	age: string = Age.None;
+	tribe: string = Tribe.None;
+
 	// Stats
-	party: number
-	partyCapacity: number
-	money: number
-	totalMoney: number
-	doorFee: number
-	clout: number
-	lit: number
-	swag: number
-	pull: number
-	karma: number
-	luck: number
-	digForChangeMod: number
-	inviteMod: number
+	party: number = 0;
+	partyCapacity: number = 50;
+	money: number = 0;
+	doorFee: number = 0;
+	karma: number = 1;
+	luck: number = 1;
+
+	// Modifiers
+	digForChangeMod: number = 1;
+	inviteMod: number = 1;
 
 	// Inventory
-	supplies: any
-	drinks: any
-	promotions: any
-	venues: any
+	food: [string, number][] = [];
+	drinks: [string, number][] = [];
+	decorations: [string, number][] = [];
+	activities: [string, number][] = [];
+	promotions: [string, number][] = [];
+	venues: [string, number][] = [];
 
 	// Settings
-	militaryTime: boolean
-	phoneBackgroundImage: string
+	militaryTime: boolean = false;
+	phoneBackgroundImage: string = '';
 
 	// Party
-	partyGoers: string[]
+	partyGoers: string[] = [];
+	genderDemographic: [number, number][] = [];
+	speciesDemographic: [string, number][] = [];
+	ageDemographic: [string, number][] = [];
+	tribeDemographic: [string, number][] = [];
+
+	// Total Stats
+	totalMoney: number = 0;
+	totalParty: number = 100;
+	totalKicked: number = 0;
+
+	// Achievements
+	// TODO
 
 	constructor() {
 		if (localStorage.getItem("partyUniverseSave")) {
-			let partyUniverseSave: any = JSON.parse(<string>localStorage.getItem("partyUniverseSave"));
+			let save: any = JSON.parse(<string>localStorage.getItem("partyUniverseSave"));
+
+			// Info
+			this.name = save.name;
+			this.partyName = save.partyName;
+			this.gender = save.gender;
+			this.age = save.age;
+			this.tribe = save.tribe;
 
 			// Stats
-			this.party = partyUniverseSave.party;
-			this.partyCapacity = partyUniverseSave.partyCapacity;
-			this.money = partyUniverseSave.money;
-			this.totalMoney = partyUniverseSave.totalMoney;
-			this.doorFee = partyUniverseSave.doorFee;
-			this.clout = partyUniverseSave.clout;
-			this.lit = partyUniverseSave.lit;
-			this.swag = partyUniverseSave.swag;
-			this.pull = partyUniverseSave.pull;
-			this.karma = partyUniverseSave.karma;
-			this.luck = partyUniverseSave.luck;
-			this.digForChangeMod = partyUniverseSave.digForChangeMod;
-			this.inviteMod = partyUniverseSave.inviteMod;
+			this.party = save.party;
+			this.partyCapacity = save.partyCapacity;
+			this.money = save.money;
+			this.doorFee = save.doorFee;
+			this.karma = save.karma;
+			this.luck = save.luck;
+
+			// Modifiers
+			this.digForChangeMod = save.digForChangeMod;
+			this.inviteMod = save.inviteMod;
 
 			// Inventory
-			this.supplies = partyUniverseSave.supplies;
-			this.drinks = partyUniverseSave.drinks;
-			this.promotions = partyUniverseSave.promotions;
-			this.venues = partyUniverseSave.venues;
+			this.food = save.food;
+			this.drinks = save.drinks;
+			this.decorations = save.decorations;
+			this.activities = save.activities;
+			this.promotions = save.promotions;
+			this.venues = save.venues;
 
 			// Settings
-			this.militaryTime = partyUniverseSave.militaryTime;
-			this.phoneBackgroundImage = partyUniverseSave.phoneBackgroundImage;
+			this.militaryTime = save.militaryTime;
+			this.phoneBackgroundImage = save.phoneBackgroundImage;
 
 			// Party
-			this.partyGoers = partyUniverseSave.partyGoers;
-		} else {
-			// Stats
-			this.party = 1;
-			this.partyCapacity = 100;
-			this.money = 0;
-			this.totalMoney = 0;
-			this.doorFee = 0;
-			this.clout = 0;
-			this.lit = 0;
-			this.swag = 0;
-			this.pull = 0;
-			this.karma = 0;
-			this.luck = 0;
-			this.digForChangeMod = 0;
-			this.inviteMod = 1;
+			this.partyGoers = save.partyGoers;
+			this.genderDemographic = save.genderDemographic;
+			this.speciesDemographic = save.speciesDemographic;
+			this.ageDemographic = save.ageDemographic;
+			this.tribeDemographic = save.tribeDemographic;
 
-			// Inventory
-			this.supplies = DEFAULT_SUPPLIES;
-			this.drinks = DEFAULT_DRINKS;
-			this.promotions = DEFAULT_PROMOTIONS;
-			this.venues = DEFAULT_VENUES;
-			
-			// Settings
-			this.militaryTime = false;
-			this.phoneBackgroundImage = '';
-
-			// Party
-			this.partyGoers = ['You'];
+			// Total Stats
+			this.totalMoney = save.totalMoney;
+			this.totalParty = save.totalParty;
+			this.totalKicked = save.totalKicked;
 		}
 	}
 
 	getSaveObject (): object {
 		return {
+			// Info
+			name: this.name,
+			partyName: this.partyName,
+			gender: this.gender,
+			age: this.age,
+			tribe: this.tribe,
+
+			// Stats
 			party: this.party,
 			partyCapacity: this.partyCapacity,
 			money: this.money,
-			totalMoney: this.totalMoney,
 			doorFee: this.doorFee,
-			clout: this.clout,
-			lit: this.lit,
-			swag: this.swag,
-			pull: this.pull,
 			karma: this.karma,
 			luck: this.luck,
+
+			// Modifiers
 			digForChangeMod: this.digForChangeMod,
 			inviteMod: this.inviteMod,
-			supplies: this.supplies,
+
+			// Inventory
+			food: this.food,
 			drinks: this.drinks,
+			decorations: this.decorations,
+			activities: this.activities,
 			promotions: this.promotions,
 			venues: this.venues,
+
+			// Settings
 			militaryTime: this.militaryTime,
 			phoneBackgroundImage: this.phoneBackgroundImage,
-			partyGoers: this.partyGoers
+
+			// Party
+			partyGoers: this.partyGoers,
+			genderDemographic: this.genderDemographic,
+			speciesDemographic: this.speciesDemographic,
+			ageDemographic: this.ageDemographic,
+			tribeDemographic: this.tribeDemographic,
+
+			// Total Stats
+			totalMoney: this.totalMoney,
+			totalParty: this.totalParty,
+			totalKicked: this.totalKicked
 		};
 	}
 
 	loadSave(): void {
 		if (localStorage.getItem("partyUniverseSave")) {
-			let partyUniverseSave: any = JSON.parse(<string>localStorage.getItem("partyUniverseSave"));
+			let save: any = JSON.parse(<string>localStorage.getItem("partyUniverseSave"));
+
+			// Info
+			this.name = save.name;
+			this.partyName = save.partyName;
+			this.gender = save.gender;
+			this.age = save.age;
+			this.tribe = save.tribe;
 
 			// Stats
-			this.party = partyUniverseSave.party;
-			this.partyCapacity = partyUniverseSave.partyCapacity;
-			this.money = partyUniverseSave.money;
-			this.totalMoney = partyUniverseSave.totalMoney;
-			this.doorFee = partyUniverseSave.doorFee;
-			this.clout = partyUniverseSave.clout;
-			this.lit = partyUniverseSave.lit;
-			this.swag = partyUniverseSave.swag;
-			this.pull = partyUniverseSave.pull;
-			this.karma = partyUniverseSave.karma;
-			this.luck = partyUniverseSave.luck;
-			this.digForChangeMod = partyUniverseSave.digForChangeMod;
-			this.inviteMod = partyUniverseSave.inviteMod;
+			this.party = save.party;
+			this.partyCapacity = save.partyCapacity;
+			this.money = save.money;
+			this.doorFee = save.doorFee;
+			this.karma = save.karma;
+			this.luck = save.luck;
+
+			// Modifiers
+			this.digForChangeMod = save.digForChangeMod;
+			this.inviteMod = save.inviteMod;
 
 			// Inventory
-			this.supplies = partyUniverseSave.supplies;
-			this.drinks = partyUniverseSave.drinks;
-			this.promotions = partyUniverseSave.promotions;
-			this.venues = partyUniverseSave.venues;
+			this.food = save.food;
+			this.drinks = save.drinks;
+			this.decorations = save.decorations;
+			this.activities = save.activities;
+			this.promotions = save.promotions;
+			this.venues = save.venues;
 
 			// Settings
-			this.militaryTime = partyUniverseSave.militaryTime;
-			this.phoneBackgroundImage = partyUniverseSave.phoneBackgroundImage;
+			this.militaryTime = save.militaryTime;
+			this.phoneBackgroundImage = save.phoneBackgroundImage;
 
 			// Party
-			this.partyGoers = partyUniverseSave.partyGoers;
+			this.partyGoers = save.partyGoers;
+			this.genderDemographic = save.genderDemographic;
+			this.speciesDemographic = save.speciesDemographic;
+			this.ageDemographic = save.ageDemographic;
+			this.tribeDemographic = save.tribeDemographic;
+
+			// Total Stats
+			this.totalMoney = save.totalMoney;
+			this.totalParty = save.totalParty;
+			this.totalKicked = save.totalKicked;
 		} else {
 			console.log("No save file found.");
 		}
@@ -345,7 +205,6 @@ export class SaveFile {
 
 	deleteSave (): void {
 		localStorage.removeItem("partyUniverseSave");
-		this.constructor();
 	}
 }
 

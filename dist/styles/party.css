@@ -1,5 +1,81 @@
+#partyContainer {
+  position: relative;
+}
+
+#partyGoerListContainer {
+  position: absolute;
+  height: calc(100% - 70px);
+  width: calc(100% - 70px);
+  background-color: rgba(39, 1, 65, 0.75);
+  backdrop-filter: blur(5px);
+  color: white;
+  z-index: 999;
+  margin: 15px;
+  border-radius: 24px;
+  padding: 20px;
+}
+#partyGoerListContainer h2 {
+  margin-top: 0;
+}
+
+#partyCamOverlay {
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  color: white;
+  font-weight: 700;
+  font-family: "VT323", monospace;
+  font-size: 24px;
+  text-shadow: 3px 3px 0 black;
+  letter-spacing: 5px;
+}
+
+#partyCamOverlayBars {
+  position: absolute;
+  width: 90%;
+  height: 80%;
+  padding: 20px;
+  top: 30px;
+  --border-style: 5px solid white;
+  --border-space: 20px;
+}
+#partyCamOverlayBars .overlay-element {
+  position: absolute;
+  width: 50px; /* controls the length of the borders */
+  height: 50px; /* controls the height of the borders */
+}
+#partyCamOverlayBars .top-left {
+  border-left: var(--border-style);
+  border-top: var(--border-style);
+  top: var(--border-space);
+  left: var(--border-space);
+}
+#partyCamOverlayBars .top-right {
+  border-right: var(--border-style);
+  border-top: var(--border-style);
+  top: var(--border-space);
+  right: var(--border-space);
+}
+#partyCamOverlayBars .bottom-left {
+  border-left: var(--border-style);
+  border-bottom: var(--border-style);
+  bottom: var(--border-space);
+}
+#partyCamOverlayBars .bottom-right {
+  border-right: var(--border-style);
+  border-bottom: var(--border-style);
+  bottom: var(--border-space);
+  right: var(--border-space);
+}
+
+#partyCamButtons {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+}
+
 #partyCanvas {
-  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.25);
   background: url("../images/floor-carpet.png");
 }
 

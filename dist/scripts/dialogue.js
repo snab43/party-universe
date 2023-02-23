@@ -35,16 +35,33 @@ const DIALOGUE_REJECTION = [
     `Sorry man, I got a thing...`,
     `I'm actually late for class!`,
     `Sorry! I'm stuck in an escape room rn`,
+    `going out with ${chance.first()} tonight`,
+    `sorry, got a hot date with ${chance.first()}! wish me luck!`,
+    `my pet ${chance.animal({ type: 'pet' })} ate my car keys!`,
+    `i'm babysitting rn`,
+    `can't..my in-laws are in town`,
+    `I'm actually out of town for a wedding rn..`,
+    `i just pooped myself`,
+    `I did a chemical peel, so my skin is too gross to party`,
+    `all my clothes are dirty, i got nothing to wear`,
+    `my lil bro has a boyscout ceremony at ${chance.hour()}${chance.ampm()}, can't miss it`,
+    `didn't you hear? all the taxi drivers are on strike. i got no ride.`,
+    `sorry i have a soul cycle class`,
+    `i gotta be up early, i have a meeting with a client in ${chance.country({ full: true })}`,
+    `sorry, i got family visiting from ${chance.country({ full: true })}`,
+    `my connecting flight got canceled, i'm stranded in ${chance.country({ full: true })}`,
+    `I'm on a business trip in ${chance.country({ full: true })}`,
+    `I've been deployed to ${chance.country({ full: true })}`
 ];
 const DIALOGUE_ACCEPTANCE = [
     `It ain't a party until I'm here!`,
     `Parties are like, kinda my thing.`,
     `A party? I'm game.`,
     `You know I'm always down for a party.`,
-    `I hope the beer is still cold!`,
+    `I hope the soda is still cold!`,
     `I'm there.`,
     `Is it even a party without me there?`,
-    `Hope there's enough beer!`,
+    `Hope there's enough soda!`,
     `I love to party!`,
     `If there's a party, I'm there.`,
     `I haven't been invited to a party in years! This is so exciting.`,
@@ -54,6 +71,18 @@ const DIALOGUE_ACCEPTANCE = [
     `im already here my guy`,
     `outside`,
     `i luv 2 party`,
+    `that sounds sick`,
+    `on my way, need me to get anything?`,
+    `what kinda party are we talkin'? regardless, i'm there!`,
+    `sweet! i had no plans and now i have plans`,
+    `i haven't left the house in a week, i guess i should get out`,
+    `i've been bored since ${chance.hour()}${chance.ampm()}, i'm game`,
+    `don't tell ${chance.first()} that i'm bailing for your party`,
+    `an excuse to skip my workout, down!`,
+    `my therapist said i should say yes to more things, so here i am!`,
+    `I hope my outfit fits the dress code!`,
+    `i'll be there, can't wait to tell you about my visit to ${chance.country({ full: true })}`,
+    `thanks! can i bring my pet ${chance.animal({ type: 'zoo' })}?`
 ];
 const DIALOGUE_NO_ROOM = [
     `I can't squeeze in!`,
@@ -64,7 +93,7 @@ const DIALOGUE_NO_ROOM = [
     `You're gonna need more room before I can party.`,
     `Make room for me first.`,
     `Wow someone's popular lol, no room.`,
-    `i can't squeeze in?`,
+    `i can't squeeze in?`
 ];
 const DIALOGUE_KICKED_OUT = [
     `You really gonna kick me out? Whack.`,
@@ -86,6 +115,7 @@ const DIALOGUE_KICKED_OUT = [
     `can we still chill later?`,
     `Disrespectful.`,
     `wack.`,
+    `this is my 13th reason why`
 ];
 const DIALOGUE_TEXT_MESSAGE = [
     `Hey dude, what's up?`,
@@ -101,7 +131,7 @@ const DIALOGUE_TEXT_MESSAGE = [
     `Wanna swap skincare routines?`,
     `i think tonight's the night`,
     `should i text her?`,
-    `don't tell anyone but i saw Mr. ${chance.last()} with Mrs. ${chance.last()} last night.`,
+    `don't tell anyone but i saw Mr. ${chance.last()} with Mrs. ${chance.last()} last night.`
 ];
 const DIALOGUE_PARTY_GOER_TEXT = [
     `Thanks for inviting me to your party!`,
@@ -109,7 +139,23 @@ const DIALOGUE_PARTY_GOER_TEXT = [
     `Where's the bathroom btw?`,
     `i'm too nervous to dance`,
     `thanks for the invite btw`,
-    `i'm gonna party until my shoes fall off`
+    `i'm gonna party until my shoes fall off`,
+    `dude i can't find the bathroom`,
+    `do you recycle?`,
+    `just stepped out of the bathroom..you might wanna give it a minute`,
+    `Are we using paper plates or real plates?`,
+    `i think someone spilled on the dance floor...definitely wasn't me`,
+    `i'm gonna party like a ${chance.animal({ type: 'zoo' })}`,
+    `check out this dance move, i call it the Funky ${chance.animal({ type: 'zoo' })}`,
+    `this is way more fun than being a ${chance.profession()}`,
+    `Help! Is there a ${chance.profession()} in the house?`,
+    `ok so a ${chance.profession()}, a ${chance.profession()}, and a ${chance.profession()} walk into a bar...`,
+    `we gotta keep this party going until ${chance.weekday({ weekday_only: false })}`,
+    `can we get a pool going for some pizza? i have ${chance.dollar({ max: 20 })}`,
+    `listen if everyone pitches in ${chance.dollar({ max: 5 })}, we can definitely get some delivery`,
+    `this reminds me of that party i was at with the talking ${chance.animal({ type: 'zoo' })}`,
+    `i can't thank you enough for the invite`,
+    `i really owe ya one for this party`
 ];
 const DIALOGUE_WRONG_NUMBER = [
     `Hey ${chance.first()}, can you pick up the BBQ?`,
@@ -128,7 +174,13 @@ const DIALOGUE_WRONG_NUMBER = [
     `kEEp PartYing`,
     `thEre Is 0nLy 1 wAy...tO PARTY`,
     `pArTy aLL nite aND dAy`,
-    `y0u cAn rEaCH uS...tHr0ugH pArTy`,
+    `y0u cAn rEaCH uS...tHr0ugH pArTy`
+];
+const DIALOGUE_FRIENDSPACE_AD = [
+    `Don't forget to catch ${chance.name()} on ${chance.tv()} news! Every weekday at ${chance.hour() + chance.ampm()}!`,
+    `Looking for Pizza for your next party? Try Joe's Pizza Shack! We have all the pizza. Literally all of it. We ransacked all the other shops in town!`,
+    `Get a phone plan that knows you! Here at Telecom we know everything about you. No need to get in touch with us, we'll get in touch with you.`,
+    `In need of the perfect gift? Good luck! But, if you need a card to go along that perfect gift, Cardsmart has you coverred! We have greeting cards, sorry cards, birthday cards, and more!`
 ];
 const DIALOGUE_FRIENDSPACE_POST = [
     `party time.`,
@@ -322,10 +374,4 @@ const DIALOGUE_FRIENDSPACE_POST = [
     `${chance.first()}, ${chance.first()}, and I are all going to Joe's Pizza Shack for Happy Hour! Join us!`,
     `${chance.radio()} is doing a special on Joe's Pizza Shack! I wonder if they'll ask about the ${chance.animal({ type: 'pet' })} meat...`,
     `diy show alert! ${chance.address()} keep it on the DL`
-];
-const DIALOGUE_FRIENDSPACE_AD = [
-    `Don't forget to catch ${chance.name()} on ${chance.tv()} news! Every weekday at ${chance.hour() + chance.ampm()}!`,
-    `Looking for Pizza for your next party? Try Joe's Pizza Shack! We have all the pizza. Literally all of it. We ransacked all the other shops in town!`,
-    `Get a phone plan that knows you! Here at Telecom we know everything about you. No need to get in touch with us, we'll get in touch with you.`,
-    `In need of the perfect gift? Good luck! But, if you need a card to go along that perfect gift, Cardsmart has you coverred! We have greeting cards, sorry cards, birthday cards, and more!`
 ];

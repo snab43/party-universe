@@ -79,19 +79,23 @@
 			}
 
 			.acceptanceMessage {
-				background: darkgreen;
+				background: rgb(0, 128, 0);
 			}
 			
 			.rejectionMessage {
-				background: darkred;
+				background: rgb(167, 0, 0);
 			}
 			
 			.keyMessage {
-				background: darkblue;
+				background: rgb(21, 21, 95);
+			}
+
+			.partyGoerMessage {
+				background: rgb(11, 61, 110);
 			}
 			
 			.defaultMessage {
-				background: #404040;
+				background: rgb(90, 90, 90);
 			}
 		}
 
@@ -165,7 +169,59 @@
 		// Store App
 		#storeApp {
 			color: black;
-			background-color: #ffb7b7;
+			background-color: #e99d9d;
+
+			h3 {
+				margin: 0;
+			}
+
+			.storeListContainer {
+				padding: 12px;
+				background-color: #f1baba;
+				border-radius: 12px;
+
+				.storeList {
+					list-style: none;
+					margin: 0;
+					padding: 0;
+					display: flex;
+					flex-direction: column;
+
+					> .storeItem {
+						margin-top: 12px;
+						display: flex;
+
+						.storeItemImageContainer {
+							flex: 1 1 25%;
+
+							img {
+								width: 100%;
+								height: 100%;
+								object-fit: fill;
+							}
+						}
+
+						.storeItemInfoContainer {
+							margin-left: 12px;
+							flex: 1 1 75%;
+
+							.storeItemName {
+								font-size: 16px;
+								font-weight: 700;
+							}
+	
+							.storeItemBuy {
+								margin-top: 6px;
+								width: 100%;
+							}
+						}
+					}
+				}
+			}
+
+			.storeListContainer:not(:last-child) {
+				margin-bottom: 12px;
+			}
 		}
 
 		// Settings App

@@ -6,10 +6,13 @@
 
 	<title>Party Universe</title>
 
+	<!-- FontAwesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 	<!-- Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:wght@500&family=VT323&display=swap" rel="stylesheet">
 
 	<!-- Stylesheets -->
 	<link rel="stylesheet" href="./styles/ui.css">
@@ -20,12 +23,26 @@
 <body>
 	<!-- Stats -->
 	<div id="stats">
-		<span id="party"></span>, 
-		<span id="money"></span>, 
-		<span id="clout"></span></br>
-		<span id="doorFee"></span>
-		<button id="doorFeeUp">+$1</button>
-		<button id="doorFeeDown">-$1</button>	
+		<div class="stat">
+			<span class="statHeader">Attendees</span><span id="party" class="statDisplay"></span>
+		</div>
+
+		<div class="stat">
+			<span class="statHeader">Money</span><span id="money" class="statDisplay"></span>
+		</div>
+
+		<div class="stat">
+			<span class="statHeader">Clout</span><span id="clout" class="statDisplay"></span>
+		</div>
+
+		<div class="stat">
+			<span class="statHeader">Door Fee</span>
+			<span class="statDisplay">
+				<span id="doorFeeDown">&#9664;</span>
+				<span id="doorFee" class="statDisplay"></span>
+				<span id="doorFeeUp">&#9654;</span>
+			</span>
+		</div>
 	</div>
 
 	<!-- Main -->
@@ -35,13 +52,28 @@
 			<button id="digForChange">Dig for Change</button><br/><br/>
 			<button id="sendAText">Send a Text ($0.25)</button><br/><br/>
 			<button id="kickSomeoneOut">Kick Someone Out</button><br/><br/>
-
-			<h2>Party Goers</h2>
-			<ul id="partyGoerList" style="padding: 0; list-style: none"></ul>
 		</div>
 
 		<!-- Party -->
 		<div id="partyContainer">
+			<div id="partyGoerListContainer" class="hidden">
+				<div class="exitButton" id="partyGoerListExit"><i class="fa-solid fa-xmark"></i></div>
+				<h2>Party Goers</h2>
+				<ul id="partyGoerList" style="padding: 0; list-style: none"></ul>
+			</div>
+
+			<div id="partyCamOverlay">PARTY CAM 1</div>
+			
+			<div id="partyCamOverlayBars">
+				<div class="overlay-element top-left"></div>
+				<div class="overlay-element top-right"></div>
+				<div class="overlay-element bottom-left"></div>
+				<div class="overlay-element bottom-right"></div>
+			</div>
+			
+			<div id="partyCamButtons">
+				<button id="partyGoerListButton">Party Goers</button>
+			</div>
 			<canvas id="partyCanvas"></canvas>
 		</div>
 		
@@ -77,17 +109,36 @@
 				<!-- Store App -->
 				<div id="storeApp" class="appContainer hidden" data-app="storeApp">
 					<h2>Store</h2>
-					<h3>Supplies</h3>
-					<div id="suppliesList"></div>
+
+					<div class="storeListContainer">
+						<h3>Food</h3>
+						<ul class="storeList" data-type="food"></ul>
+					</div>
 					
-					<h3>Drinks</h3>
-					<div id="drinkList"></div>
+					<div class="storeListContainer">
+						<h3>Drinks</h3>
+						<ul class="storeList" data-type="drinks"></ul>
+					</div>
+
+					<div class="storeListContainer">
+						<h3>Decorations</h3>
+						<ul class="storeList" data-type="decorations"></ul>
+					</div>
+
+					<div class="storeListContainer">
+						<h3>Activities</h3>
+						<ul class="storeList" data-type="activities"></ul>
+					</div>
 					
-					<h3>Promotions</h3>
-					<div id="promotionsList"></div>
+					<div class="storeListContainer">
+						<h3>Promotions</h3>
+						<ul class="storeList" data-type="promotions"></ul>
+					</div>
 					
-					<h3>Venues</h3>
-					<div id="venuesList"></div>
+					<div class="storeListContainer">
+						<h3>Venues</h3>
+						<ul class="storeList" data-type="venues"></ul>
+					</div>
 				</div>
 
 				<!-- Settings App -->
@@ -126,7 +177,7 @@
 	
 	<!-- Game Data -->
 	<div id="gameData">
-		<div><a href="https://github.com/snab43/party-universe" target="_blank">GitHub</a> &#x2022; v<span id="version">0.0.2</span> &#x2022; Copyright <span id="copyrightYear"></span></div>
+		<div><a href="https://github.com/snab43/party-universe" target="_blank">GitHub</a> &#x2022; v<span id="version"></span> &#x2022; Copyright <span id="copyrightYear"></span></div>
 		<div>
 			<button id="saveGameButton">Save Game</button>
 			<button id="loadGameButton">Load Game</button>
@@ -138,7 +189,13 @@
 	<!-- Library scripts -->
 	<script src="scripts/chance.js" charset="utf-8" type="text/javascript"></script>
 
-	<!-- Game scripts -->
+	<!-- Modules -->
+	<script src="scripts/utilities.js" charset="utf-8" type="text/javascript"></script>
+	<script src="scripts/ui.js" charset="utf-8" type="text/javascript"></script>
+	<script src="scripts/social.js" charset="utf-8" type="text/javascript"></script>
+	<script src="scripts/randomEvents.js" charset="utf-8" type="text/javascript"></script>
+
+	<!-- Core scripts -->
 	<script src="scripts/gameInfo.js" charset="utf-8" type="text/javascript"></script>
 	<script src="scripts/dialogue.js" charset="utf-8" type="text/javascript"></script>
 	<script src="scripts/canvas.js" charset="utf-8" type="text/javascript"></script>

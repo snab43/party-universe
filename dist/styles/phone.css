@@ -63,16 +63,19 @@
   text-align: right;
 }
 #phoneContainer #appContainer #messagesApp .acceptanceMessage {
-  background: darkgreen;
+  background: rgb(0, 128, 0);
 }
 #phoneContainer #appContainer #messagesApp .rejectionMessage {
-  background: darkred;
+  background: rgb(167, 0, 0);
 }
 #phoneContainer #appContainer #messagesApp .keyMessage {
-  background: darkblue;
+  background: rgb(21, 21, 95);
+}
+#phoneContainer #appContainer #messagesApp .partyGoerMessage {
+  background: rgb(11, 61, 110);
 }
 #phoneContainer #appContainer #messagesApp .defaultMessage {
-  background: #404040;
+  background: rgb(90, 90, 90);
 }
 #phoneContainer #appContainer #friendSpaceApp {
   color: black;
@@ -130,7 +133,49 @@
 }
 #phoneContainer #appContainer #storeApp {
   color: black;
-  background-color: #ffb7b7;
+  background-color: #e99d9d;
+}
+#phoneContainer #appContainer #storeApp h3 {
+  margin: 0;
+}
+#phoneContainer #appContainer #storeApp .storeListContainer {
+  padding: 12px;
+  background-color: #f1baba;
+  border-radius: 12px;
+}
+#phoneContainer #appContainer #storeApp .storeListContainer .storeList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+#phoneContainer #appContainer #storeApp .storeListContainer .storeList > .storeItem {
+  margin-top: 12px;
+  display: flex;
+}
+#phoneContainer #appContainer #storeApp .storeListContainer .storeList > .storeItem .storeItemImageContainer {
+  flex: 1 1 25%;
+}
+#phoneContainer #appContainer #storeApp .storeListContainer .storeList > .storeItem .storeItemImageContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+#phoneContainer #appContainer #storeApp .storeListContainer .storeList > .storeItem .storeItemInfoContainer {
+  margin-left: 12px;
+  flex: 1 1 75%;
+}
+#phoneContainer #appContainer #storeApp .storeListContainer .storeList > .storeItem .storeItemInfoContainer .storeItemName {
+  font-size: 16px;
+  font-weight: 700;
+}
+#phoneContainer #appContainer #storeApp .storeListContainer .storeList > .storeItem .storeItemInfoContainer .storeItemBuy {
+  margin-top: 6px;
+  width: 100%;
+}
+#phoneContainer #appContainer #storeApp .storeListContainer:not(:last-child) {
+  margin-bottom: 12px;
 }
 #phoneContainer #appContainer #settingsApp {
   color: white;

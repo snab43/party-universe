@@ -1,4 +1,4 @@
-![version](https://badgen.net/badge/Version/0.0.1/red) ![ts](https://badgen.net/badge/Built%20With/TypeScript/blue) ![sass](https://badgen.net/badge/Built%20With/Sass/green)
+![version](https://badgen.net/badge/Version/0.0.3/red) ![ts](https://badgen.net/badge/Built%20With/TypeScript/blue) ![sass](https://badgen.net/badge/Built%20With/Sass/green)
 
 <div align="center">
     <h3 align="center">Party Universe</h3>
