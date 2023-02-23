@@ -2,6 +2,7 @@
 var Social;
 (function (Social) {
     function updateTextMessage(name, message, type, militaryTime) {
+        UI.appNotification("messagesApp");
         let newItem = document.createElement("LI");
         newItem.classList.add(type);
         newItem.innerHTML = `
@@ -28,6 +29,7 @@ var Social;
     }
     Social.updateTextMessage = updateTextMessage;
     function updateFriendSpaceFeed(name, locationFrom, message, militaryTime) {
+        UI.appNotification("friendSpaceApp");
         let newItem = document.createElement("LI");
         newItem.innerHTML = `
 			<b>${name}</b></br>

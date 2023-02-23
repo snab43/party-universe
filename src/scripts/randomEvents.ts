@@ -11,7 +11,6 @@ namespace randomEvents {
 				DIALOGUE_FRIENDSPACE_POST[Math.floor(Math.random()*DIALOGUE_FRIENDSPACE_POST.length)],
 				militaryTime
 			);
-			UI.appNotification("friendSpaceApp");
 		}
 		
 		// FriendSpace ad
@@ -22,7 +21,6 @@ namespace randomEvents {
 				DIALOGUE_FRIENDSPACE_AD[Math.floor(Math.random()*DIALOGUE_FRIENDSPACE_AD.length)],
 				militaryTime
 			);
-			UI.appNotification("friendSpaceApp");
 		}
 	}
 
@@ -38,7 +36,6 @@ namespace randomEvents {
 				MessageType.Party,
 				militaryTime
 			);
-			UI.appNotification("messagesApp");
 		}
 
 		// Text message
@@ -49,7 +46,6 @@ namespace randomEvents {
 				MessageType.Default,
 				militaryTime
 			);
-			UI.appNotification("messagesApp");
 		}
 		
 		// Wrong number message
@@ -60,7 +56,6 @@ namespace randomEvents {
 				MessageType.Default,
 				militaryTime
 			);
-			UI.appNotification("messagesApp");
 		}
 	}
 		

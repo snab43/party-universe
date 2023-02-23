@@ -1,5 +1,7 @@
 namespace Social {
 	export function updateTextMessage(name: string, message: string, type: string, militaryTime: boolean) {
+		UI.appNotification("messagesApp");
+
 		let newItem = document.createElement("LI");
 		newItem.classList.add(type);
 		newItem.innerHTML = `
@@ -27,8 +29,9 @@ namespace Social {
 	}
 	
 	export function updateFriendSpaceFeed(name: string, locationFrom: string, message: string, militaryTime: boolean) {
+		UI.appNotification("friendSpaceApp");
+
 		let newItem = document.createElement("LI");
-	
 		newItem.innerHTML = `
 			<b>${name}</b></br>
 			<small>${Utilities.getHourMinuteTimeStamp(militaryTime)} &#8226; ${locationFrom}</small></br>
