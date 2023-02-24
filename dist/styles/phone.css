@@ -86,10 +86,10 @@
 }
 #phoneContainer #appContainer #friendSpaceApp {
   color: black;
-  background: lightblue;
+  background: #d3d3f4;
 }
 #phoneContainer #appContainer #friendSpaceApp > h2 {
-  color: darkblue;
+  color: rgb(52, 52, 199);
 }
 #phoneContainer #appContainer #friendSpaceApp > #createPost {
   margin-bottom: 20px;
@@ -108,32 +108,50 @@
   border-radius: 12px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
+  background-color: #f4f4fc;
 }
 #phoneContainer #appContainer #friendSpaceApp > #createPost > button {
   color: white;
-  background-color: darkblue;
+  background-color: rgb(52, 52, 199);
   width: 100%;
 }
-#phoneContainer #appContainer #friendSpaceApp > ul li {
-  background: white;
+#phoneContainer #appContainer #friendSpaceApp > ul .friendSpacePost {
+  background: #f8f8fd;
   padding: 12px;
-  margin-bottom: 12px;
+  margin: 12px 0;
   border-radius: 12px;
 }
-#phoneContainer #appContainer #friendSpaceApp > ul li b {
-  color: darkblue;
+#phoneContainer #appContainer #friendSpaceApp > ul .friendSpacePost b {
+  color: rgb(52, 52, 199);
 }
-#phoneContainer #appContainer #friendSpaceApp > ul li p {
+#phoneContainer #appContainer #friendSpaceApp > ul .friendSpacePost p {
   font-size: 14px;
   margin: 6px 0;
   overflow-wrap: anywhere;
 }
-#phoneContainer #appContainer #friendSpaceApp > ul li small {
-  color: grey;
+#phoneContainer #appContainer #friendSpaceApp > ul .friendSpacePost small {
+  color: #6b6b6b;
+  font-size: 12px;
+}
+#phoneContainer #appContainer #friendSpaceApp > ul .friendSpacePost .likeBox {
+  color: #6b6b6b;
+  font-size: 12px;
+  margin-top: 8px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #d1d1d1;
+}
+#phoneContainer #appContainer #friendSpaceApp > ul .friendSpacePost i {
+  color: white;
+  background-color: rgb(52, 52, 199);
+  padding: 5px;
+  border-radius: 25px;
+  font-size: 9px;
+  margin-right: 6px;
 }
 #phoneContainer #appContainer #friendSpaceApp > p {
   text-align: center;
-  color: #646464;
+  color: #6b6b6b;
 }
 #phoneContainer #appContainer #storeApp {
   color: black;

@@ -28,6 +28,9 @@ body #stats .stat {
 body #stats .stat:not(:last-child) {
   margin-right: 12px;
 }
+body #stats .statMaxCapacity {
+  background-color: rgb(177, 12, 12);
+}
 body #stats .statHeader {
   margin-right: 6px;
 }

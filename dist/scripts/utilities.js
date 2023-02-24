@@ -28,10 +28,6 @@ var Utilities;
         return strTime;
     }
     Utilities.getHourMinuteTimeStamp = getHourMinuteTimeStamp;
-    function getWeekday() {
-        return new Date().toLocaleString('en-us', { weekday: 'long' });
-    }
-    Utilities.getWeekday = getWeekday;
     function statChange(statID, amount) {
         let stat = document.getElementById(statID);
         let statChange = document.createElement("DIV");
@@ -56,4 +52,8 @@ var Utilities;
         setTimeout(() => statChange.remove(), 490);
     }
     Utilities.statChange = statChange;
+    function cleanNumber(number, decimals) {
+        return (Math.trunc(number * (10 * decimals)) / (10 * decimals));
+    }
+    Utilities.cleanNumber = cleanNumber;
 })(Utilities || (Utilities = {}));

@@ -31,10 +31,12 @@ var Social;
     function updateFriendSpaceFeed(name, locationFrom, message, militaryTime) {
         UI.appNotification("friendSpaceApp");
         let newItem = document.createElement("LI");
+        newItem.classList.add('friendSpacePost');
         newItem.innerHTML = `
 			<b>${name}</b></br>
 			<small>${Utilities.getHourMinuteTimeStamp(militaryTime)} &#8226; ${locationFrom}</small></br>
 			<p>${message}</p>
+			<div class="likeBox hidden"><i class="fa-solid fa-thumbs-up"></i><span class="likePrefix"></span><span class="likeCount hidden">0</span><span class="likeSuffix"></span></div>
 			<small>Like &#8226; Comment &#8226; Share
 		`;
         let list = document.getElementById("friendSpaceFeed");

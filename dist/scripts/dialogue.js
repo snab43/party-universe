@@ -131,7 +131,8 @@ const DIALOGUE_TEXT_MESSAGE = [
     `Wanna swap skincare routines?`,
     `i think tonight's the night`,
     `should i text her?`,
-    `don't tell anyone but i saw Mr. ${chance.last()} with Mrs. ${chance.last()} last night.`
+    `don't tell anyone but i saw Mr. ${chance.last()} with Mrs. ${chance.last()} last night.`,
+    `why don't we ever hang anymore? wyd later`
 ];
 const DIALOGUE_PARTY_GOER_TEXT = [
     `Thanks for inviting me to your party!`,
@@ -158,17 +159,14 @@ const DIALOGUE_PARTY_GOER_TEXT = [
     `i really owe ya one for this party`
 ];
 const DIALOGUE_WRONG_NUMBER = [
-    `Hey ${chance.first()}, can you pick up the BBQ?`,
-    `Todavía no he olvidado el incidente.`,
-    `ainda precisamos ir às compras`,
     `${chance.first()}, please call me...its urgent`,
     `hi this is ${chance.first()} i was just wondering if u wanted to come over for pizza, i hope this is the rite number`,
-    `hello?`,
-    `salom?`,
     `Need some INSTANT-CA$H right now? Get up to $${chance.integer({ min: 500, max: 1000 })}$--TODAY! Reply YES for further info, or NO for -UNSUBSCRIBE-`,
     `HURRY UP!TODAY ONLY!RayBan&Oakley Sunglasses Outlets. ALL SALES ${chance.integer({ min: 0, max: 100 })}% OFF! Shop Now`,
     `New offer ${chance.string()} show this for a $${chance.integer({ min: 5, max: 20 })} cut (exp. ${chance.date({ string: true })}). Join our loyalty club & your 5th haircut is FREE! Reply STOP to opt out`,
-    `Due to a new legislation, those struggling with debt can now apply to have it written off. For FREE information reply INFO or to opt-out text stop.`,
+    `Due to a new legislation, those struggling with debt can now apply to have it written off. For FREE information reply INFO or to opt-out text stop.`
+];
+const DIALOGUE_ALIEN_TEXT = [
     `we kn0w y0u 4re 0uT tHEre`,
     `y0u 4re tHe sEED anD Us tHE tRee`,
     `kEEp PartYing`,
@@ -374,4 +372,56 @@ const DIALOGUE_FRIENDSPACE_POST = [
     `${chance.first()}, ${chance.first()}, and I are all going to Joe's Pizza Shack for Happy Hour! Join us!`,
     `${chance.radio()} is doing a special on Joe's Pizza Shack! I wonder if they'll ask about the ${chance.animal({ type: 'pet' })} meat...`,
     `diy show alert! ${chance.address()} keep it on the DL`
+];
+const DIALOGUE_FRIENDSPACE_HASHTAG = [
+    `ThinkAboutIt`,
+    `ReallyMakesYouThink`,
+    `goals`,
+    `AnotherBanger`,
+    `FriendSpaceSucks`,
+    `Addicted`,
+    `JustKidding`,
+    `ButForReal`,
+    `Real`,
+    `ifyousayso`,
+    `respect`,
+    `corny`,
+    `kidding`,
+    `jk`,
+    `jkjk`,
+    `REAL`,
+    `OnlyRealOnesKnow`,
+    `IYKYK`,
+    `DontMakeMeRepeatMyself`,
+    `like4like`,
+    `Like4Like`,
+    `LikeForLike`,
+    `GiveMeThemLikes`,
+    `LikesDownBelow`,
+    `LikeBeforeUGo`,
+    `StoleThisOne`,
+    `stolen`,
+    `InfluencerLife`,
+    `OKBUTFR`,
+    `DoYouGetIt`,
+    `deep`,
+    `hashtag`,
+    `haha`,
+    `lol`,
+    `lmao`,
+    `rofl`,
+    `roflcopter`,
+    `NotSerious`,
+    `srs`,
+    `Srsly`,
+    `yourejoking`,
+    `isaidwhatisaid`,
+    `ISaidWhatISAID`,
+    `LMAO`,
+    `OpenUpYourThirdEye`,
+    `TheyreOutThere`,
+    `ListenToTheStatic`,
+    `Believe`,
+    `AliensExist`,
+    `IBelieve`
 ];

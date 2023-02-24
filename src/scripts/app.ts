@@ -1,3 +1,10 @@
+// =============================================================
+// app.ts
+// -------------------------------------------------------------
+// Where the game starts and where the core gameplay loop and
+// save file exists.
+// =============================================================
+
 import { SaveFile } from './models/saveFile.js'
 
 let gameSave = new SaveFile();
@@ -5,10 +12,9 @@ let gameSave = new SaveFile();
 
 // =============================================================
 // Data Management
-// -------------------------------------------------------------
+// =============================================================
 document.addEventListener("DOMContentLoaded", function() {
 	console.log("DEBUG: DOM loaded.");
-
 	loadUI();
 });
 
@@ -34,8 +40,8 @@ function getHiddenStatsInConsole() {
 
 
 // =============================================================
-// Load UI
-// -------------------------------------------------------------
+// Load UI on initial game load. Assigns event listeners.
+// =============================================================
 function loadUI() {
 	// Add event listeners
 	document.getElementById("doorFeeUp")!.addEventListener("click", changeDoorFeeUp, false);
@@ -100,37 +106,45 @@ function loadUI() {
 
 
 // =============================================================
-// Action functions
-// -------------------------------------------------------------
+// Dig for Change, generates a random amount of money
+// =============================================================
 function digForChange() {
-	let minChange = 0.1;
-	let maxChange = 0.25;
+	let minChange = MIN_CHANGE;
+	let maxChange = MAX_CHANGE;
 
-	minChange = minChange * (gameSave.luck);
+	// The possible low increases based on luck
+	minChange = minChange * gameSave.luck;
 	if (minChange > maxChange) minChange = maxChange;
 
+	// Generate change, increased by digForChangeMod, update stats
 	let change = (Math.random() * (maxChange - minChange) + minChange) * gameSave.digForChangeMod;
 	gameSave.money += change;
 	gameSave.totalMoney += change;
 
+	// Generates +$change animation and updates UI
 	Utilities.statChange("money", change);
 	updateUI();
 }
 
+// =============================================================
+// Send a text message inviting someone to your party
+// =============================================================
 function sendAText() {
 	// Party at capacity
 	if (gameSave.party >= gameSave.partyCapacity) {
+		// Send "no room" text message
 		Social.updateTextMessage(
 			chance.name(),
 			DIALOGUE_NO_ROOM[Math.floor(Math.random()*DIALOGUE_NO_ROOM.length)],
 			MessageType.Reject,
 			gameSave.militaryTime
 		);
-	// Money check
+	// If you can afford it
 	} else if (gameSave.money >= TEXT_COST) {
 		gameSave.money -= TEXT_COST;
 		
-		// Success calculation
+		// Success calculation based on Clout and Door Fee.
+		// More Clout means you can get away with a higher Door Fee.
 		let chanceOfSuccess = (Utilities.calculateClout(gameSave.party, gameSave.money)*50 - gameSave.doorFee)/100;
 		if (chanceOfSuccess < 0) chanceOfSuccess = 0;
 		if (gameSave.doorFee <= 0) chanceOfSuccess = 0.5;
@@ -139,12 +153,14 @@ function sendAText() {
 		if (chanceOfSuccess >= Math.random()) {
 			let partyGoerName: string = chance.name();
 
+			// Stat update
 			gameSave.party += 1;
 			gameSave.totalParty += 1;
 			gameSave.money += gameSave.doorFee;
 			gameSave.totalMoney += gameSave.doorFee;
 			gameSave.partyGoers.push(partyGoerName);
 
+			// Send an acceptance message
 			Social.updateTextMessage(
 				partyGoerName,
 				DIALOGUE_ACCEPTANCE[Math.floor(Math.random()*DIALOGUE_ACCEPTANCE.length)],
@@ -155,6 +171,7 @@ function sendAText() {
 			Utilities.statChange("party", 1);
 		// Unsuccessful invite
 		} else {
+			// Send a rejection message
 			Social.updateTextMessage(
 				chance.name(),
 				DIALOGUE_REJECTION[Math.floor(Math.random()*DIALOGUE_REJECTION.length)],
@@ -163,6 +180,7 @@ function sendAText() {
 			);
 		}
 
+		// Generates a -$0.25 animation
 		Utilities.statChange("money", -TEXT_COST);
 	} else {
 		console.log("ERROR: Tried to send a text with no money.");
@@ -171,15 +189,23 @@ function sendAText() {
 	updateUI();
 }
 
+// =============================================================
+// Kicks a random person out of the party
+// =============================================================
 function kickSomeoneOut() {
+	// If the party actually has people
 	if (gameSave.party > 0) {
+		// Grabs a random person from the partyGoer array and removes them
 		const random: number = Math.floor(Math.random() * (gameSave.partyGoers.length));
 		let partyGoerName: string = gameSave.partyGoers[random];
 		gameSave.partyGoers.splice(random, 1)[0];
 
+		// Updates variables
 		gameSave.party -= 1;
 		gameSave.totalKicked += 1;
+		gameSave.karma -= 1;
 
+		// Sends a text message from the upset person who you kicked
 		Social.updateTextMessage(
 			partyGoerName,
 			DIALOGUE_KICKED_OUT[Math.floor(Math.random()*DIALOGUE_KICKED_OUT.length)],
@@ -187,6 +213,7 @@ function kickSomeoneOut() {
 			gameSave.militaryTime
 		);
 
+		// Updates UI and makes a "-1" animation
 		updateUI();
 		Utilities.statChange("party", -1);
 	} else {
@@ -194,6 +221,11 @@ function kickSomeoneOut() {
 	}
 }
 
+// =============================================================
+// Updates the door fee.
+// These should be 1 function but I'm not sure how to do that with
+// event listeners...
+// =============================================================
 function changeDoorFeeUp () {
 	gameSave.doorFee += 1;
 	if (gameSave.doorFee <= 0) gameSave.doorFee = 0;
@@ -206,9 +238,14 @@ function changeDoorFeeDown () {
 	UI.updateDoorFee(gameSave.doorFee);
 }
 
+// =============================================================
+// Adds a FriendSpace post when you hit "submit"
+// =============================================================
 function submitPost() {
+	// Gets the status update
 	let statusUpdate = (<HTMLInputElement>document.getElementById("statusUpdate")!);
 	
+	// If it's not blank, push a post and clear the text box
 	if (statusUpdate.value) {
 		Social.updateFriendSpaceFeed(
 			gameSave.name,
@@ -225,7 +262,8 @@ function submitPost() {
 
 // =============================================================
 // Buy functions
-// -------------------------------------------------------------
+// =============================================================
+// VERY OLD CODE THAT NEEDS TO BE RE-WRITTEN TO WORK.
 /*
 function buySupplies(id: number) {
 	let totalCost: number = ITEM_STATS.supplies[id as keyof any].cost * gameSave.supplies[id as keyof any].costMod;
@@ -284,20 +322,31 @@ function buyVenues(id: number) {
 }
 */
 
-
+// =============================================================
+// Update the UI (ran every tick)
+// =============================================================
 function updateUI() {
-	UI.updateStatDisplay(gameSave.party, gameSave.partyCapacity, gameSave.money, Utilities.calculateClout(gameSave.party, gameSave.money));
+	UI.updateStatDisplay(gameSave.party, gameSave.partyCapacity, gameSave.money);
 	UI.updatePartyList(gameSave.partyGoers);
 	UI.updateStore(gameSave.totalMoney);
 	UI.updateTime(gameSave.militaryTime);
 }
 
-
 // =============================================================
-// Main Game Loop
-// -------------------------------------------------------------
-let mainGameLoop = window.setInterval(function() {
-	updateUI();
+// Run various random events
+// =============================================================
+function runRandomEvents() {
 	randomEvents.friendSpacePost(gameSave.militaryTime);
 	randomEvents.textMessage(gameSave.partyGoers, gameSave.militaryTime);
+	randomEvents.friendSpacePostLiked();
+
+	gameSave = randomEvents.partyEvents(gameSave);
+}
+
+// =============================================================
+// Main Game Loop, every 1 second 
+// =============================================================
+let mainGameLoop = window.setInterval(function() {
+	updateUI();
+	runRandomEvents();
 }, 1000)

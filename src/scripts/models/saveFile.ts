@@ -1,8 +1,8 @@
 // =============================================================
-// gameData.ts
+// saveFile.ts
 // -------------------------------------------------------------
-// All the games data that's variable and can be changed. Also
-// seen as the save data.
+// Exports the saveFile class and all the saveGame, loadGame,
+// and deleteGame functions.
 // =============================================================
 
 export class SaveFile {

@@ -1,4 +1,16 @@
+// =============================================================
+// utilities.ts
+// -------------------------------------------------------------
+// Various utilitiy functions used across the game.
+// Clout calculation, getting time, getting weekday, stat change
+// animations.
+// =============================================================
+
 namespace Utilities {
+	// =============================================================
+	// Calculates the Clout value (100% cloud is "end game" and when
+	// aliens start to notice your party).
+	// =============================================================
 	export function calculateClout(party: number, money: number): number {
 		// Clout is: 75% party size (max 100,000,000), 25% money saved (max $10,000,000)
 		// There's also a slight bend to it so it's not so linear.
@@ -8,13 +20,17 @@ namespace Utilities {
 		let total: number = partySizeCalc + moneySavedCalc; // Result: 0 - 1
 		
 		// Bend the results
-		let bendFactor: number = 0.1; // Between 0 - 1. The smaller the number, the stricter the bend (faster start, slow end)
-		let calculation: number = -Math.pow((Math.pow(total, bendFactor) - 1), 2) + 1;	// Result 0 -1
+		let bendFactor: number = 0.1; // Between 0 - 1. The smaller the number, the stricter the bend (fast start, slow end)
+		let calculation: number = -Math.pow((Math.pow(total, bendFactor) - 1), 2) + 1;	// Result 0 - 1
 
 		return calculation;
 	}
 
-	export function getHourMinuteTimeStamp(militaryTime: boolean) {
+	// =============================================================
+	// Get the current timestamp, returns either:
+	// 8:20 PM or 20:20 depending on if militaryTime is true
+	// =============================================================
+	export function getHourMinuteTimeStamp(militaryTime: boolean): string {
 		let date = new Date();
 	
 		let hours: number | string = date.getHours();
@@ -34,11 +50,10 @@ namespace Utilities {
 		return strTime;
 	}
 
-	export function getWeekday() {
-		return new Date().toLocaleString('en-us', {weekday: 'long'});
-	}
-
-	export function statChange(statID: string, amount: number) {
+	// =============================================================
+	// Creates a stat change animation
+	// =============================================================
+	export function statChange(statID: string, amount: number): void {
 		let stat = document.getElementById(statID)!;
 		let statChange = document.createElement("DIV");
 
@@ -58,5 +73,10 @@ namespace Utilities {
 		}
 
 		setTimeout(() => statChange.remove(), 490);
+	}
+
+	// Returns back the given number with decimal places removed
+	export function cleanNumber(number: number, decimals: number): number {
+		return (Math.trunc(number * (10 * decimals)) / (10 * decimals))
 	}
 }

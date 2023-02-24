@@ -1,6 +1,8 @@
 "use strict";
+const MIN_CHANGE = 0.1;
+const MAX_CHANGE = 0.25;
 const TEXT_COST = 0.25;
-const GAME_VERSION = '0.0.4';
+const GAME_VERSION = '0.0.5';
 const FOOD_STATS = [
     {
         id: "nachos",

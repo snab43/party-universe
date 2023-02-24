@@ -4,10 +4,18 @@ var UI;
     let friendSpaceNotifications = 0;
     let messagesNotifications = 0;
     let storeNotifications = 0;
-    function updateStatDisplay(party, partyCapacity, money, clout) {
+    function updateStatDisplay(party, partyCapacity, money) {
+        var _a, _b, _c, _d;
+        let clout = Utilities.calculateClout(party, money);
         document.getElementById("party").innerHTML = `${party} / ${partyCapacity}`;
         document.getElementById("money").innerHTML = `$${money.toFixed(2)}`;
         document.getElementById("clout").innerHTML = `${clout.toFixed(2)}%`;
+        if (party >= partyCapacity) {
+            (_b = (_a = document.getElementById("party")) === null || _a === void 0 ? void 0 : _a.parentElement) === null || _b === void 0 ? void 0 : _b.classList.add("statMaxCapacity");
+        }
+        else {
+            (_d = (_c = document.getElementById("party")) === null || _c === void 0 ? void 0 : _c.parentElement) === null || _d === void 0 ? void 0 : _d.classList.remove("statMaxCapacity");
+        }
     }
     UI.updateStatDisplay = updateStatDisplay;
     function updateDoorFee(doorFee) {
@@ -128,7 +136,12 @@ var UI;
             }
             let appIconBadge = document.querySelector(`.appIconBadge[data-app="${dataApp}"]`);
             appIconBadge.classList.remove("hidden");
-            appIconBadge.textContent = `${amount}`;
+            if (amount >= 100) {
+                appIconBadge.textContent = "99+";
+            }
+            else {
+                appIconBadge.textContent = `${amount}`;
+            }
             (_a = document.querySelector(`.fa-solid[data-app="${dataApp}"]`)) === null || _a === void 0 ? void 0 : _a.classList.remove("hidden");
         }
     }
@@ -142,8 +155,25 @@ var UI;
         document.getElementById("notificationTime").innerText = Utilities.getHourMinuteTimeStamp(militaryTime);
     }
     UI.updateTime = updateTime;
-    function updateButtons() {
-        let percentToReveal = 2;
+    function updateButtons(doorFee, party, money) {
+        if (doorFee <= 0) {
+            document.getElementById("doorFeeDown").disabled = true;
+        }
+        else {
+            document.getElementById("doorFeeDown").disabled = false;
+        }
+        if (party <= 0) {
+            document.getElementById("kickSomeoneOut").disabled = true;
+        }
+        else {
+            document.getElementById("kickSomeoneOut").disabled = false;
+        }
+        if (money < TEXT_COST) {
+            document.getElementById("sendAText").disabled = true;
+        }
+        else {
+            document.getElementById("sendAText").disabled = false;
+        }
     }
     UI.updateButtons = updateButtons;
 })(UI || (UI = {}));

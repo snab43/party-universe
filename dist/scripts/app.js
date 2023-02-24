@@ -61,9 +61,9 @@ function loadUI() {
     UI.updateDoorFee(gameSave.doorFee);
 }
 function digForChange() {
-    let minChange = 0.1;
-    let maxChange = 0.25;
-    minChange = minChange * (gameSave.luck);
+    let minChange = MIN_CHANGE;
+    let maxChange = MAX_CHANGE;
+    minChange = minChange * gameSave.luck;
     if (minChange > maxChange)
         minChange = maxChange;
     let change = (Math.random() * (maxChange - minChange) + minChange) * gameSave.digForChangeMod;
@@ -110,6 +110,7 @@ function kickSomeoneOut() {
         gameSave.partyGoers.splice(random, 1)[0];
         gameSave.party -= 1;
         gameSave.totalKicked += 1;
+        gameSave.karma -= 1;
         Social.updateTextMessage(partyGoerName, DIALOGUE_KICKED_OUT[Math.floor(Math.random() * DIALOGUE_KICKED_OUT.length)], "rejectionMessage", gameSave.militaryTime);
         updateUI();
         Utilities.statChange("party", -1);
@@ -141,13 +142,18 @@ function submitPost() {
     }
 }
 function updateUI() {
-    UI.updateStatDisplay(gameSave.party, gameSave.partyCapacity, gameSave.money, Utilities.calculateClout(gameSave.party, gameSave.money));
+    UI.updateStatDisplay(gameSave.party, gameSave.partyCapacity, gameSave.money);
     UI.updatePartyList(gameSave.partyGoers);
     UI.updateStore(gameSave.totalMoney);
     UI.updateTime(gameSave.militaryTime);
 }
-let mainGameLoop = window.setInterval(function () {
-    updateUI();
+function runRandomEvents() {
     randomEvents.friendSpacePost(gameSave.militaryTime);
     randomEvents.textMessage(gameSave.partyGoers, gameSave.militaryTime);
+    randomEvents.friendSpacePostLiked();
+    gameSave = randomEvents.partyEvents(gameSave);
+}
+let mainGameLoop = window.setInterval(function () {
+    updateUI();
+    runRandomEvents();
 }, 1000);
