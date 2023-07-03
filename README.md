@@ -15,6 +15,10 @@ This is a WIP web-based incremental game. It's still not complete by any means.
 
 HTML, SASS, and TypeScript.
 
+## Screenshots
+
+![Party Universe screenshot](https://i.postimg.cc/L80pMWJN/Capture.png)
+
 ## Acknowledgements
 
 - [Chance.js](https://chancejs.com/) by [Victor Quinn](https://www.victorquinn.com/)
