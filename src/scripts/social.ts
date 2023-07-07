@@ -17,11 +17,13 @@ namespace Social {
 	
 		// Get the <ul> list
 		let list = document.getElementById("textMessages")!;
+		list.insertBefore(newItem, list.childNodes[0]);
 
+		/*
 		// If the messages app is hidden, create an "Older Messages" header and push that first.
 		// If an "Older Messages" header exists, just push on top.
 		// If the app is open, just push on top.
-		// NOTE: The logic here is weird, possibly wrong?
+		// NOTE: The logic here is weird, possibly wrong?		
 		if (document.querySelector(`.appContainer[data-app="messagesApp"]`)!.classList.contains('hidden')) {
 			if (document.getElementById("oldMessagesHeader")) {
 				list.insertBefore(newItem, list.childNodes[0]);
@@ -36,6 +38,7 @@ namespace Social {
 		} else {
 			list.insertBefore(newItem, list.childNodes[0]);
 		}
+		*/
 	}
 	
 	// =============================================================

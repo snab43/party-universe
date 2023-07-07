@@ -11,21 +11,7 @@ var Social;
 			<small>${Utilities.getHourMinuteTimeStamp(militaryTime)} &#8226; SMS
 		`;
         let list = document.getElementById("textMessages");
-        if (document.querySelector(`.appContainer[data-app="messagesApp"]`).classList.contains('hidden')) {
-            if (document.getElementById("oldMessagesHeader")) {
-                list.insertBefore(newItem, list.childNodes[0]);
-            }
-            else {
-                let oldMessageHeader = document.createElement("LI");
-                oldMessageHeader.id = "oldMessagesHeader";
-                oldMessageHeader.innerHTML = `<h3>Older Messages</h3>`;
-                list.insertBefore(oldMessageHeader, list.childNodes[0]);
-                list.insertBefore(newItem, list.childNodes[0]);
-            }
-        }
-        else {
-            list.insertBefore(newItem, list.childNodes[0]);
-        }
+        list.insertBefore(newItem, list.childNodes[0]);
     }
     Social.updateTextMessage = updateTextMessage;
     function updateFriendZoneFeed(name, locationFrom, message, militaryTime) {
