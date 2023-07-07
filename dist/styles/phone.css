@@ -84,20 +84,20 @@
 #phoneContainer #appContainer #messagesApp .defaultMessage {
   background: rgb(90, 90, 90);
 }
-#phoneContainer #appContainer #friendSpaceApp {
+#phoneContainer #appContainer #friendZoneApp {
   color: black;
   background: #d3d3f4;
 }
-#phoneContainer #appContainer #friendSpaceApp > h2 {
+#phoneContainer #appContainer #friendZoneApp > h2 {
   color: rgb(52, 52, 199);
 }
-#phoneContainer #appContainer #friendSpaceApp > #createPost {
+#phoneContainer #appContainer #friendZoneApp > #createPost {
   margin-bottom: 20px;
 }
-#phoneContainer #appContainer #friendSpaceApp > #createPost > h3 {
+#phoneContainer #appContainer #friendZoneApp > #createPost > h3 {
   margin: 10px 0;
 }
-#phoneContainer #appContainer #friendSpaceApp > #createPost > textarea {
+#phoneContainer #appContainer #friendZoneApp > #createPost > textarea {
   width: calc(100% - 24px);
   margin-bottom: 8px;
   border: none;
@@ -110,30 +110,30 @@
   font-size: 14px;
   background-color: #f4f4fc;
 }
-#phoneContainer #appContainer #friendSpaceApp > #createPost > button {
+#phoneContainer #appContainer #friendZoneApp > #createPost > button {
   color: white;
   background-color: rgb(52, 52, 199);
   width: 100%;
 }
-#phoneContainer #appContainer #friendSpaceApp > ul .friendSpacePost {
+#phoneContainer #appContainer #friendZoneApp > ul .friendZonePost {
   background: #f8f8fd;
   padding: 12px;
   margin: 12px 0;
   border-radius: 12px;
 }
-#phoneContainer #appContainer #friendSpaceApp > ul .friendSpacePost b {
+#phoneContainer #appContainer #friendZoneApp > ul .friendZonePost b {
   color: rgb(52, 52, 199);
 }
-#phoneContainer #appContainer #friendSpaceApp > ul .friendSpacePost p {
+#phoneContainer #appContainer #friendZoneApp > ul .friendZonePost p {
   font-size: 14px;
   margin: 6px 0;
   overflow-wrap: anywhere;
 }
-#phoneContainer #appContainer #friendSpaceApp > ul .friendSpacePost small {
+#phoneContainer #appContainer #friendZoneApp > ul .friendZonePost small {
   color: #6b6b6b;
   font-size: 12px;
 }
-#phoneContainer #appContainer #friendSpaceApp > ul .friendSpacePost .likeBox {
+#phoneContainer #appContainer #friendZoneApp > ul .friendZonePost .likeBox {
   color: #6b6b6b;
   font-size: 12px;
   margin-top: 8px;
@@ -141,7 +141,7 @@
   margin-bottom: 4px;
   border-bottom: 1px solid #d1d1d1;
 }
-#phoneContainer #appContainer #friendSpaceApp > ul .friendSpacePost i {
+#phoneContainer #appContainer #friendZoneApp > ul .friendZonePost i {
   color: white;
   background-color: rgb(52, 52, 199);
   padding: 5px;
@@ -149,7 +149,7 @@
   font-size: 9px;
   margin-right: 6px;
 }
-#phoneContainer #appContainer #friendSpaceApp > p {
+#phoneContainer #appContainer #friendZoneApp > p {
   text-align: center;
   color: #6b6b6b;
 }

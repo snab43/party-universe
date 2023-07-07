@@ -137,11 +137,11 @@ function changeDoorFeeDown() {
 function submitPost() {
     let statusUpdate = document.getElementById("statusUpdate");
     if (statusUpdate.value) {
-        Social.updateFriendSpaceFeed(gameSave.name, gameSave.partyName, statusUpdate.value, gameSave.militaryTime);
+        Social.updateFriendZoneFeed(gameSave.name, gameSave.partyName, statusUpdate.value, gameSave.militaryTime);
         statusUpdate.value = "";
     }
     else {
-        console.log("ERROR: Tried post an empty FriendSpace status update.");
+        console.log("ERROR: Tried post an empty FriendZone status update.");
     }
 }
 function updateUI() {
@@ -151,9 +151,9 @@ function updateUI() {
     UI.updateTime(gameSave.militaryTime);
 }
 function runRandomEvents() {
-    randomEvents.friendSpacePost(gameSave.militaryTime);
+    randomEvents.friendZonePost(gameSave.militaryTime);
     randomEvents.textMessage(gameSave.partyGoers, gameSave.militaryTime);
-    randomEvents.friendSpacePostLiked();
+    randomEvents.friendZonePostLiked();
 }
 let mainGameLoop = window.setInterval(function () {
     updateUI();

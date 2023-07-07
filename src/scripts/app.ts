@@ -238,7 +238,7 @@ function changeDoorFeeDown () {
 }
 
 // =============================================================
-// Adds a FriendSpace post when you hit "submit"
+// Adds a FriendZone post when you hit "submit"
 // =============================================================
 function submitPost() {
 	// Gets the status update
@@ -246,7 +246,7 @@ function submitPost() {
 	
 	// If it's not blank, push a post and clear the text box
 	if (statusUpdate.value) {
-		Social.updateFriendSpaceFeed(
+		Social.updateFriendZoneFeed(
 			gameSave.name,
 			gameSave.partyName,
 			statusUpdate.value,
@@ -254,7 +254,7 @@ function submitPost() {
 		);
 		statusUpdate.value = "";
 	} else {
-		console.log("ERROR: Tried post an empty FriendSpace status update.")
+		console.log("ERROR: Tried post an empty FriendZone status update.")
 	}
 }
 
@@ -335,9 +335,9 @@ function updateUI() {
 // Run various random events
 // =============================================================
 function runRandomEvents() {
-	randomEvents.friendSpacePost(gameSave.militaryTime);
+	randomEvents.friendZonePost(gameSave.militaryTime);
 	randomEvents.textMessage(gameSave.partyGoers, gameSave.militaryTime);
-	randomEvents.friendSpacePostLiked();
+	randomEvents.friendZonePostLiked();
 
 	//gameSave = randomEvents.partyEvents(gameSave);
 }

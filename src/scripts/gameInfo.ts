@@ -247,8 +247,8 @@ interface Promotion {
 
 const PROMOTION_STATS: Promotion[] = [
 	{
-		id: "friendSpaceAd",
-		name: "FriendSpace Ad",
+		id: "friendZoneAd",
+		name: "FriendZone Ad",
 		cost: 100,
 		costPerTick: 2,
 		genderWeight: [Gender.None],

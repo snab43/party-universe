@@ -112,8 +112,8 @@ const ACTIVITY_STATS = [
 ];
 const PROMOTION_STATS = [
     {
-        id: "friendSpaceAd",
-        name: "FriendSpace Ad",
+        id: "friendZoneAd",
+        name: "FriendZone Ad",
         cost: 100,
         costPerTick: 2,
         genderWeight: [-1],

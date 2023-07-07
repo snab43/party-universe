@@ -1,9 +1,9 @@
 namespace randomEvents {
 	// =============================================================
-	// FriendSpace Post
+	// FriendZone Post
 	// =============================================================
-	export function friendSpacePost(militaryTime: boolean) {
-		// FriendSpace update
+	export function friendZonePost(militaryTime: boolean) {
+		// FriendZone update
 		if (Math.random() <= 1/200) {
 			let post:string = DIALOGUE_FRIENDSPACE_POST[Math.floor(Math.random()*DIALOGUE_FRIENDSPACE_POST.length)];
 
@@ -14,7 +14,7 @@ namespace randomEvents {
 				}
 			}
 
-			Social.updateFriendSpaceFeed(
+			Social.updateFriendZoneFeed(
 				chance.name(),
 				chance.city() + ", " + chance.country(),
 				post,
@@ -22,9 +22,9 @@ namespace randomEvents {
 			);
 		}
 		
-		// FriendSpace ad
+		// FriendZone ad
 		if (Math.random() <= 1/500) {
-			Social.updateFriendSpaceFeed(
+			Social.updateFriendZoneFeed(
 				"Advertisement",
 				"Sponsored",
 				DIALOGUE_FRIENDSPACE_AD[Math.floor(Math.random()*DIALOGUE_FRIENDSPACE_AD.length)],
@@ -33,9 +33,9 @@ namespace randomEvents {
 		}
 	}
 
-	// FriendSpace likes
-	export function friendSpacePostLiked() {
-		let posts = document.getElementsByClassName("friendSpacePost")!;
+	// FriendZone likes
+	export function friendZonePostLiked() {
+		let posts = document.getElementsByClassName("friendZonePost")!;
 
 		if (posts.length > 0) {
 			// Has a 5% chance of ever happening, maxing out at 98% chance at around 100 posts.

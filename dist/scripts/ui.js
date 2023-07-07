@@ -1,7 +1,7 @@
 "use strict";
 var UI;
 (function (UI) {
-    let friendSpaceNotifications = 0;
+    let friendZoneNotifications = 0;
     let messagesNotifications = 0;
     let storeNotifications = 0;
     function updateStatDisplay(party, partyCapacity, money) {
@@ -92,8 +92,8 @@ var UI;
             case "messagesApp":
                 messagesNotifications = 0;
                 break;
-            case "friendSpaceApp":
-                friendSpaceNotifications = 0;
+            case "friendZoneApp":
+                friendZoneNotifications = 0;
                 break;
             case "storeApp":
                 storeNotifications = 0;
@@ -102,7 +102,7 @@ var UI;
         if (dataApp == "messagesApp" && !((_c = document.querySelector(`.appContainer[data-app="messagesApp"]`)) === null || _c === void 0 ? void 0 : _c.classList.contains('hidden'))) {
             (_d = document.getElementById("oldMessagesHeader")) === null || _d === void 0 ? void 0 : _d.remove();
         }
-        if (dataApp == "friendSpaceApp" && !((_e = document.querySelector(`.appContainer[data-app="friendSpaceApp"]`)) === null || _e === void 0 ? void 0 : _e.classList.contains('hidden'))) {
+        if (dataApp == "friendZoneApp" && !((_e = document.querySelector(`.appContainer[data-app="friendZoneApp"]`)) === null || _e === void 0 ? void 0 : _e.classList.contains('hidden'))) {
             (_f = document.getElementById("oldPostsHeader")) === null || _f === void 0 ? void 0 : _f.remove();
         }
         let appContainers = document.getElementsByClassName("appContainer");
@@ -125,9 +125,9 @@ var UI;
                     messagesNotifications += 1;
                     amount = messagesNotifications;
                     break;
-                case "friendSpaceApp":
-                    friendSpaceNotifications += 1;
-                    amount = friendSpaceNotifications;
+                case "friendZoneApp":
+                    friendZoneNotifications += 1;
+                    amount = friendZoneNotifications;
                     break;
                 case "storeApp":
                     storeNotifications += 1;

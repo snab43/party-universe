@@ -1,6 +1,6 @@
 namespace UI {
 	// Notifcation tracking variables.
-	let friendSpaceNotifications: number = 0;
+	let friendZoneNotifications: number = 0;
 	let messagesNotifications: number = 0;
 	let storeNotifications: number = 0;
 
@@ -113,7 +113,7 @@ namespace UI {
 		// Sets the notification amount of the relevant app to 0
 		switch (dataApp) {
 			case "messagesApp": messagesNotifications = 0; break;
-			case "friendSpaceApp": friendSpaceNotifications = 0; break;
+			case "friendZoneApp": friendZoneNotifications = 0; break;
 			case "storeApp": storeNotifications = 0; break;
 		}
 
@@ -122,8 +122,8 @@ namespace UI {
 			document.getElementById("oldMessagesHeader")?.remove();
 		}
 
-		// If the FriendSpace app is closed, it removes the "Older Posts" header
-		if (dataApp == "friendSpaceApp" && !(document.querySelector(`.appContainer[data-app="friendSpaceApp"]`)?.classList.contains('hidden'))) {
+		// If the FriendZone app is closed, it removes the "Older Posts" header
+		if (dataApp == "friendZoneApp" && !(document.querySelector(`.appContainer[data-app="friendZoneApp"]`)?.classList.contains('hidden'))) {
 			document.getElementById("oldPostsHeader")?.remove();
 		}
 
@@ -152,9 +152,9 @@ namespace UI {
 					messagesNotifications += 1;
 					amount = messagesNotifications;
 					break;
-				case "friendSpaceApp":
-					friendSpaceNotifications += 1;
-					amount = friendSpaceNotifications;
+				case "friendZoneApp":
+					friendZoneNotifications += 1;
+					amount = friendZoneNotifications;
 					break;
 				case "storeApp":
 					storeNotifications += 1;

@@ -28,10 +28,10 @@ var Social;
         }
     }
     Social.updateTextMessage = updateTextMessage;
-    function updateFriendSpaceFeed(name, locationFrom, message, militaryTime) {
-        UI.appNotification("friendSpaceApp");
+    function updateFriendZoneFeed(name, locationFrom, message, militaryTime) {
+        UI.appNotification("friendZoneApp");
         let newItem = document.createElement("LI");
-        newItem.classList.add('friendSpacePost');
+        newItem.classList.add('friendZonePost');
         newItem.innerHTML = `
 			<b>${name}</b></br>
 			<small>${Utilities.getHourMinuteTimeStamp(militaryTime)} &#8226; ${locationFrom}</small></br>
@@ -39,8 +39,8 @@ var Social;
 			<div class="likeBox hidden"><i class="fa-solid fa-thumbs-up"></i><span class="likePrefix"></span><span class="likeCount hidden">0</span><span class="likeSuffix"></span></div>
 			<small>Like &#8226; Comment &#8226; Share
 		`;
-        let list = document.getElementById("friendSpaceFeed");
-        if (document.querySelector(`.appContainer[data-app="friendSpaceApp"]`).classList.contains('hidden')) {
+        let list = document.getElementById("friendZoneFeed");
+        if (document.querySelector(`.appContainer[data-app="friendZoneApp"]`).classList.contains('hidden')) {
             if (document.getElementById("oldPostsHeader")) {
                 list.insertBefore(newItem, list.childNodes[0]);
             }
@@ -56,5 +56,5 @@ var Social;
             list.insertBefore(newItem, list.childNodes[0]);
         }
     }
-    Social.updateFriendSpaceFeed = updateFriendSpaceFeed;
+    Social.updateFriendZoneFeed = updateFriendZoneFeed;
 })(Social || (Social = {}));
