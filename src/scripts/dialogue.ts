@@ -1,9 +1,3 @@
-// =============================================================
-// dialogue.ts
-// -------------------------------------------------------------
-// All the dialogue in the game. Reading this ruins the fun.
-// =============================================================
-
 const DIALOGUE_KEY: string[] = [
 	`It's just you here...`,
 	`Welcome back to the party!`,

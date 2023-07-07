@@ -1,12 +1,3 @@
-/* =============================================================
- * randomEvents.ts
- * =============================================================
- * All the random events that happen in this game come from here.
- * Currently just cosmetic text messages and friend space posts,
- * eventually will include things that actually effect your party
- * based on who is at your party.
- */
-
 namespace randomEvents {
 	// =============================================================
 	// FriendSpace Post
@@ -124,9 +115,10 @@ namespace randomEvents {
 	// =============================================================
 	// Party Events
 	// =============================================================
+	/*
 	export function partyEvents(gameSave: any) {
 		// Someone stole money from you
-		if (gameSave.party > 2 && Math.random() <= 1/(1000 + gameSave.karma * 100)) {
+		if (gameSave.party > 2 && gameSave.karma < 0 && Math.random() <= 1/(1000 - (gameSave.karma * 10))) {
 			let maxStolenCash = Math.min(gameSave.money, Math.random() * (gameSave.money / (10 * gameSave.karma)));
 			let minStolenCash = Math.min(maxStolenCash, Math.random() * (gameSave.money / (15 * gameSave.luck)));
 
@@ -173,4 +165,5 @@ namespace randomEvents {
 
 		return gameSave;
 	}
+	*/
 }

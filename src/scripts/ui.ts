@@ -1,11 +1,3 @@
-// =============================================================
-// UI.ts
-// -------------------------------------------------------------
-// All functions that pertain to the UI.
-// Stat display, door fee, party list, store generator,
-// phone apps, etc.
-// =============================================================
-
 namespace UI {
 	// Notifcation tracking variables.
 	let friendSpaceNotifications: number = 0;

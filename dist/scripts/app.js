@@ -66,7 +66,9 @@ function digForChange() {
     minChange = minChange * gameSave.luck;
     if (minChange > maxChange)
         minChange = maxChange;
-    let change = (Math.random() * (maxChange - minChange) + minChange) * gameSave.digForChangeMod;
+    let change = (Math.random() * (maxChange - minChange) + minChange);
+    change *= gameSave.digForChangeMod;
+    change = Utilities.cleanNumber(change, 2);
     gameSave.money += change;
     gameSave.totalMoney += change;
     Utilities.statChange("money", change);
@@ -76,7 +78,7 @@ function sendAText() {
     if (gameSave.party >= gameSave.partyCapacity) {
         Social.updateTextMessage(chance.name(), DIALOGUE_NO_ROOM[Math.floor(Math.random() * DIALOGUE_NO_ROOM.length)], "rejectionMessage", gameSave.militaryTime);
     }
-    else if (gameSave.money >= TEXT_COST) {
+    if (gameSave.party < gameSave.partyCapacity && gameSave.money >= TEXT_COST) {
         gameSave.money -= TEXT_COST;
         let chanceOfSuccess = (Utilities.calculateClout(gameSave.party, gameSave.money) * 50 - gameSave.doorFee) / 100;
         if (chanceOfSuccess < 0)
@@ -92,13 +94,14 @@ function sendAText() {
             gameSave.partyGoers.push(partyGoerName);
             Social.updateTextMessage(partyGoerName, DIALOGUE_ACCEPTANCE[Math.floor(Math.random() * DIALOGUE_ACCEPTANCE.length)], "acceptanceMessage", gameSave.militaryTime);
             Utilities.statChange("party", 1);
+            Utilities.statChange("money", gameSave.doorFee - TEXT_COST);
         }
         else {
             Social.updateTextMessage(chance.name(), DIALOGUE_REJECTION[Math.floor(Math.random() * DIALOGUE_REJECTION.length)], "rejectionMessage", gameSave.militaryTime);
+            Utilities.statChange("money", -TEXT_COST);
         }
-        Utilities.statChange("money", -TEXT_COST);
     }
-    else {
+    if (gameSave.money <= TEXT_COST) {
         console.log("ERROR: Tried to send a text with no money.");
     }
     updateUI();
@@ -151,7 +154,6 @@ function runRandomEvents() {
     randomEvents.friendSpacePost(gameSave.militaryTime);
     randomEvents.textMessage(gameSave.partyGoers, gameSave.militaryTime);
     randomEvents.friendSpacePostLiked();
-    gameSave = randomEvents.partyEvents(gameSave);
 }
 let mainGameLoop = window.setInterval(function () {
     updateUI();

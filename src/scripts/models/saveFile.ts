@@ -1,10 +1,3 @@
-// =============================================================
-// saveFile.ts
-// -------------------------------------------------------------
-// Exports the saveFile class and all the saveGame, loadGame,
-// and deleteGame functions.
-// =============================================================
-
 export class SaveFile {
 	// Info
 	name: string = 'You';
@@ -46,7 +39,7 @@ export class SaveFile {
 
 	// Total Stats
 	totalMoney: number = 0;
-	totalParty: number = 100;
+	totalParty: number = 0;
 	totalKicked: number = 0;
 
 	// Achievements

@@ -1,10 +1,3 @@
-// =============================================================
-// Social.ts
-// -------------------------------------------------------------
-// Various functions for Messages and FriendSpace apps.
-// Currently just updating posts.
-// =============================================================
-
 namespace Social {
 	// =============================================================
 	// Generates a text message and appends to the top of the list

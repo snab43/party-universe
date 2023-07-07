@@ -1,10 +1,3 @@
-// =============================================================
-// canvas.ts
-// -------------------------------------------------------------
-// Handles the Party view canvas. Purely cosmetic and just for
-// fun. Extremely unfinished.
-// =============================================================
-
 const canvasContainer: any = document.getElementById("partyContainer");
 let canvas: any = document.getElementById("partyCanvas")!;
 let ctx = canvas.getContext("2d");

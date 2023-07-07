@@ -69,32 +69,4 @@ var randomEvents;
         }
     }
     randomEvents.textMessage = textMessage;
-    function partyEvents(gameSave) {
-        if (gameSave.party > 2 && Math.random() <= 1 / (1000 + gameSave.karma * 100)) {
-            let maxStolenCash = Math.min(gameSave.money, Math.random() * (gameSave.money / (10 * gameSave.karma)));
-            let minStolenCash = Math.min(maxStolenCash, Math.random() * (gameSave.money / (15 * gameSave.luck)));
-            let stolenMoney = (Math.random() * (maxStolenCash - minStolenCash) + minStolenCash);
-            stolenMoney = Utilities.cleanNumber(stolenMoney, 2);
-            stolenMoney = Math.max(stolenMoney, 0.01);
-            gameSave.money -= stolenMoney;
-            Utilities.statChange("money", -stolenMoney);
-            UI.updateStatDisplay(gameSave.party, gameSave.partyCapacity, gameSave.money);
-            Social.updateTextMessage(gameSave.partyGoers[Math.floor(Math.random() * (gameSave.partyGoers.length))], `I think I just saw ${gameSave.partyGoers[Math.floor(Math.random() * (gameSave.partyGoers.length))]} steal money from you...`, "partyGoerMessage", gameSave.militaryTime);
-            console.log(`Stolen Money: $${stolenMoney} (Min: $${minStolenCash.toFixed(2)}, Max: $${maxStolenCash.toFixed(2)})`);
-        }
-        if (gameSave.party > 1 && Math.random() <= 1 / 800) {
-            let maxPizzaMoney = Math.min(gameSave.money, Math.random() * (gameSave.money / (10 * gameSave.karma)));
-            let minPizzaMoney = Math.min(maxPizzaMoney, Math.random() * (gameSave.money / (15 * gameSave.luck)));
-            let pizzaMoney = (Math.random() * (maxPizzaMoney - minPizzaMoney) + minPizzaMoney);
-            pizzaMoney = Utilities.cleanNumber(pizzaMoney, 2);
-            pizzaMoney = Math.max(pizzaMoney, 0.01);
-            gameSave.money -= pizzaMoney;
-            Utilities.statChange("money", pizzaMoney);
-            UI.updateStatDisplay(gameSave.party, gameSave.partyCapacity, gameSave.money);
-            Social.updateTextMessage(gameSave.partyGoers[Math.floor(Math.random() * (gameSave.partyGoers.length))], `Yo I hear there was a pizza fund going around? Here's my contribution. I love pizza.`, "partyGoerMessage", gameSave.militaryTime);
-            console.log(`Pizza Money: $${pizzaMoney} (Min: $${minPizzaMoney.toFixed(2)}, Max: $${maxPizzaMoney.toFixed(2)})`);
-        }
-        return gameSave;
-    }
-    randomEvents.partyEvents = partyEvents;
 })(randomEvents || (randomEvents = {}));

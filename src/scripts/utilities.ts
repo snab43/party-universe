@@ -1,11 +1,3 @@
-// =============================================================
-// utilities.ts
-// -------------------------------------------------------------
-// Various utilitiy functions used across the game.
-// Clout calculation, getting time, getting weekday, stat change
-// animations.
-// =============================================================
-
 namespace Utilities {
 	// =============================================================
 	// Calculates the Clout value (100% cloud is "end game" and when
@@ -57,9 +49,10 @@ namespace Utilities {
 		let stat = document.getElementById(statID)!;
 		let statChange = document.createElement("DIV");
 
-		switch (statID) {
-			case "money": statChange.innerText = `$${Math.abs(amount).toFixed(2)}`; break;
-			default: statChange.innerText = `${amount}`; break;
+		if (statID == "money") {
+			statChange.innerText = `$${Math.abs(amount).toFixed(2)}`;
+		} else {
+			statChange.innerText = `${Math.abs(amount)}`;
 		}
 		
 		stat.parentNode!.appendChild(statChange);
@@ -77,6 +70,7 @@ namespace Utilities {
 
 	// Returns back the given number with decimal places removed
 	export function cleanNumber(number: number, decimals: number): number {
-		return (Math.trunc(number * (10 * decimals)) / (10 * decimals))
+		let factor = Math.pow(10, decimals);
+		return Math.round((number + Number.EPSILON) * factor) / factor;
 	}
 }

@@ -31,13 +31,11 @@ var Utilities;
     function statChange(statID, amount) {
         let stat = document.getElementById(statID);
         let statChange = document.createElement("DIV");
-        switch (statID) {
-            case "money":
-                statChange.innerText = `$${Math.abs(amount).toFixed(2)}`;
-                break;
-            default:
-                statChange.innerText = `${amount}`;
-                break;
+        if (statID == "money") {
+            statChange.innerText = `$${Math.abs(amount).toFixed(2)}`;
+        }
+        else {
+            statChange.innerText = `${Math.abs(amount)}`;
         }
         stat.parentNode.appendChild(statChange);
         if (amount > 0) {
@@ -53,7 +51,8 @@ var Utilities;
     }
     Utilities.statChange = statChange;
     function cleanNumber(number, decimals) {
-        return (Math.trunc(number * (10 * decimals)) / (10 * decimals));
+        let factor = Math.pow(10, decimals);
+        return Math.round((number + Number.EPSILON) * factor) / factor;
     }
     Utilities.cleanNumber = cleanNumber;
 })(Utilities || (Utilities = {}));

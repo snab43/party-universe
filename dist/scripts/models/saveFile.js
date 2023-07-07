@@ -27,7 +27,7 @@ export class SaveFile {
         this.ageDemographic = [];
         this.tribeDemographic = [];
         this.totalMoney = 0;
-        this.totalParty = 100;
+        this.totalParty = 0;
         this.totalKicked = 0;
         if (localStorage.getItem("partyUniverseSave")) {
             let save = JSON.parse(localStorage.getItem("partyUniverseSave"));

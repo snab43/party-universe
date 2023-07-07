@@ -1,10 +1,3 @@
-// =============================================================
-// app.ts
-// -------------------------------------------------------------
-// Where the game starts and where the core gameplay loop and
-// save file exists.
-// =============================================================
-
 import { SaveFile } from './models/saveFile.js'
 
 let gameSave = new SaveFile();
@@ -117,7 +110,9 @@ function digForChange() {
 	if (minChange > maxChange) minChange = maxChange;
 
 	// Generate change, increased by digForChangeMod, update stats
-	let change = (Math.random() * (maxChange - minChange) + minChange) * gameSave.digForChangeMod;
+	let change = (Math.random() * (maxChange - minChange) + minChange);
+	change *= gameSave.digForChangeMod;
+	change = Utilities.cleanNumber(change, 2);
 	gameSave.money += change;
 	gameSave.totalMoney += change;
 
@@ -139,8 +134,10 @@ function sendAText() {
 			MessageType.Reject,
 			gameSave.militaryTime
 		);
-	// If you can afford it
-	} else if (gameSave.money >= TEXT_COST) {
+	}
+
+	// Party not at capacity & you can afford it
+	if (gameSave.party < gameSave.partyCapacity && gameSave.money >= TEXT_COST) {
 		gameSave.money -= TEXT_COST;
 		
 		// Success calculation based on Clout and Door Fee.
@@ -169,6 +166,7 @@ function sendAText() {
 			);
 
 			Utilities.statChange("party", 1);
+			Utilities.statChange("money", gameSave.doorFee - TEXT_COST);
 		// Unsuccessful invite
 		} else {
 			// Send a rejection message
@@ -178,11 +176,12 @@ function sendAText() {
 				MessageType.Reject,
 				gameSave.militaryTime
 			);
-		}
 
-		// Generates a -$0.25 animation
-		Utilities.statChange("money", -TEXT_COST);
-	} else {
+			Utilities.statChange("money", -TEXT_COST);
+		}
+	}
+	
+	if (gameSave.money <= TEXT_COST) {
 		console.log("ERROR: Tried to send a text with no money.");
 	}
 	
@@ -340,7 +339,7 @@ function runRandomEvents() {
 	randomEvents.textMessage(gameSave.partyGoers, gameSave.militaryTime);
 	randomEvents.friendSpacePostLiked();
 
-	gameSave = randomEvents.partyEvents(gameSave);
+	//gameSave = randomEvents.partyEvents(gameSave);
 }
 
 // =============================================================
